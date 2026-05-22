@@ -1,0 +1,21 @@
+{
+  "heroStats": [
+    {
+      "display": "50 - 90%",
+      "label": "Sneller proces van offerte naar order"
+    },
+    {
+      "display": "30 - 80%",
+      "label": "Minder orderfouten door validatie"
+    },
+    {
+      "display": "10 - 30%",
+      "label": "Hogere conversie van offerte naar order"
+    }
+  ],
+  "sources": [
+    "Forrester Research — The Total Economic Impact of CPQ: foutreductie, conversie en lagere sales effort",
+    "Gartner — CPQ Market Guide en Magic Quadrant: schaal, conversie en time-to-market",
+    "Salesforce — State of Sales en CPQ benchmarks: kortere offerte-doorlooptijd"
+  ]
+}

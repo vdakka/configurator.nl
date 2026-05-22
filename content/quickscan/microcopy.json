@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "eyebrow": "Quickscan · 2 minuten",
+    "title": "Past een configurator bij jouw bedrijf?",
+    "sub": "Doe de Quickscan. Tien stellingen, swipe wat klopt, en je weet direct of een configurator jullie verkoopproces gaat helpen.",
+    "metaItems": ["10 stellingen", "2 minuten", "Direct uitslag"],
+    "cta": "Start de quickscan",
+    "secondary": "Hoe werkt het?"
+  },
+  "profile": {
+    "eyebrow": "Eerst eventjes",
+    "title": "Wie zijn jouw klanten vooral?",
+    "lede": "Op basis hiervan kiezen we de stellingen die het meest relevant zijn voor jou.",
+    "options": [
+      { "id": "b2b", "tag": "Optie A", "label": "Vooral zakelijk", "desc": "B2B, dealers, partners en lange salesprocessen" },
+      { "id": "b2c", "tag": "Optie B", "label": "Vooral consumenten", "desc": "B2C, online verkoop, zelf samenstellen" },
+      { "id": "both", "tag": "Optie C", "label": "Beide ongeveer evenveel", "desc": "Een gemengde markt met B2B én B2C" }
+    ],
+    "foot": "Deze vraag telt nog niet mee in de uitslag."
+  },
+  "swipe": {
+    "statementLabel": "Stelling",
+    "hintNo": "← Niet herkenbaar",
+    "hintYes": "Ja, dat zijn wij →",
+    "stampYes": "Ja, dat zijn wij",
+    "stampNo": "Niet herkenbaar",
+    "buttonYes": "Ja, dat zijn wij",
+    "buttonNo": "Niet herkenbaar",
+    "keyboardHint": "← Niet herkenbaar · → Ja, dat zijn wij · ↑ Vorige",
+    "previous": "← Vorige",
+    "questionLabel": "Vraag"
+  },
+  "loading": {
+    "title": "Even rekenen"
+  },
+  "results": {
+    "match": {
+      "eyebrow": "Quickscan · resultaat",
+      "title": "It's a match!",
+      "meta": "Met Gerke van den Akker · Configurator Lead",
+      "sub": "Op basis van jouw antwoorden is er een grote kans dat een configurator jullie verkoopproces flink helpt. Mag Gerke deze week contact opnemen om persoonlijk kennis te maken?",
+      "submit": "Verzenden",
+      "follow": "Volg ons"
+    },
+    "kansen": {
+      "eyebrow": "Quickscan · resultaat",
+      "title": "Er liggen kansen voor jullie.",
+      "meta": "Analyse op maat van Gerke van den Akker",
+      "sub": "Een paar van je antwoorden wijzen op duidelijke configurator-kansen. Laat je e-mail achter, dan stuurt Gerke je een korte analyse op maat.",
+      "submit": "Stuur mij de analyse",
+      "follow": "Volg ons"
+    },
+    "nognniet": {
+      "eyebrow": "Quickscan · resultaat",
+      "title": "Misschien is een configurator nu nog niet jullie prioriteit.",
+      "sub": "Geen probleem. Wil je je toch laten inspireren door wat collega's met een configurator hebben bereikt? Download het Configurator.nl inspiratiestuk.",
+      "primaryCta": "Download inspiratiestuk",
+      "replay": "Speel opnieuw"
+    }
+  },
+  "thanks": {
+    "title": "Bedankt, we nemen snel contact op.",
+    "sub": "Gerke kijkt deze week naar jouw antwoorden en stuurt een persoonlijk bericht. Geen verkoopmail, wel een eerlijk advies over je volgende stap.",
+    "replay": "Speel de quickscan opnieuw",
+    "home": "Terug naar de homepage"
+  },
+  "form": {
+    "labels": {
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "phone": "Telefoonnummer",
+      "linkedin": "URL LinkedIn profiel",
+      "email": "E-mailadres",
+      "consent": "JA, Gerke mag contact opnemen."
+    },
+    "errors": {
+      "required": "Dit veld is verplicht",
+      "email": "Vul een geldig e-mailadres in",
+      "phone": "Vul een geldig telefoonnummer in"
+    }
+  }
+}

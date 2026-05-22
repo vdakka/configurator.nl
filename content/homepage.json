@@ -1,0 +1,127 @@
+{
+  "seo": {
+    "title": "Productconfigurator laten bouwen",
+    "description": "Configurators die werken voor je klant én je bedrijfsproces. Guided selling, configuratie en visualisatie in één, geïntegreerd in je systeemlandschap."
+  },
+  "hero": {
+    "metaStrip": [
+      "Sinds 2017",
+      "4+ live configuratoren",
+      "Discovery → Build → Run",
+      "B2B + B2C"
+    ],
+    "headline": {
+      "pre": "Configuratoren die",
+      "highlight": "werken voor",
+      "post": "jouw business."
+    },
+    "sub": "Een productconfigurator is je digitale adviseur. Klanten stellen hun product samen, jouw systeem valideert direct naar prijs, beschikbaarheid en productie. Wij ontwerpen en bouwen ze, van Discovery tot integratie in je IT- of systeemlandschap.",
+    "primaryCta": "Plan een vrijblijvend gesprek",
+    "secondaryCta": "Doe de quickscan"
+  },
+  "trustStrip": {
+    "label": "Configuratoren live voor",
+    "logos": ["Gamma", "Karwei", "Praxis", "Leen Bakker", "Van Raam", "FETIM"],
+    "meta": "en 12 meer · sinds 2017"
+  },
+  "marketShift": {
+    "eyebrow": "Wat een configurator écht is",
+    "title": "Een configurator is jouw digitale adviseur. Niet enkel een formulier.",
+    "lede": "De meeste configurators kunnen één ding goed. Guided selling, óf configuratie, óf visualisatie. Wij geloven dat een configurator pas écht waarde levert als die drie samenkomen, en als hij, volledig geïntegreerd, praat met de systemen waar de rest van je bedrijf op draait.",
+    "blocks": [
+      {
+        "num": "01",
+        "title": "Guided selling",
+        "body": "Je klant weet vaak nog niet wat hij precies wil. De configurator stelt de juiste vragen, in de juiste volgorde, en helpt hem naar het beste product voor zijn situatie."
+      },
+      {
+        "num": "02",
+        "title": "Configuratie",
+        "body": "Regels, varianten, afhankelijkheden, prijzen. De configurator valideert in realtime, voorkomt onmogelijke combinaties en vertaalt keuzes direct naar productiegegevens."
+      },
+      {
+        "num": "03",
+        "title": "Visualisatie",
+        "body": "Wat je samenstelt, zie je gebeuren. Geen abstracte selectievelden, maar een product dat letterlijk vorm krijgt op het scherm. Vertrouwen omhoog, twijfel omlaag."
+      }
+    ]
+  },
+  "quickscanTeaser": {
+    "eyebrow": "Quickscan · swipegame",
+    "title": "Past een configurator bij jouw bedrijf?",
+    "lede": "Doe de Quickscan. Tien stellingen, swipe wat klopt, en je weet direct of een configurator jullie verkoopproces gaat helpen.",
+    "meta": [
+      { "value": "10", "label": "stellingen" },
+      { "value": "2", "label": "minuten" },
+      { "value": "→", "label": "Direct uitslag" }
+    ],
+    "cta": "Start de quickscan",
+    "secondary": "Of bekijk hoe het werkt",
+    "exampleStatement": "Een offerte maken kost ons gemiddeld meer dan een uur.",
+    "exampleLabel": "Stelling · 03 / 10"
+  },
+  "discovery": {
+    "eyebrow": "Onze aanpak",
+    "title": "Wij nemen de regie. In deze volgorde.",
+    "lede": "We starten bij de strategie van je bedrijf en eindigen bij de technologie. Niet andersom. Omdat we technologie-onafhankelijk zijn, kunnen we eerlijk kiezen wat bij jou past.",
+    "axes": [
+      {
+        "id": "strategie",
+        "tag": "Stap 01",
+        "label": "Strategie",
+        "coord": "axis://strategy",
+        "shape": "sphereY",
+        "glyph": "target",
+        "detailTitle": "Bedrijfsdoelen + doelgroepen",
+        "detailBody": "We beginnen bij wat je bedrijf moet bereiken. Doelen, doelgroepen, KPI's. Elke latere keuze slaat terug op iets meetbaars.",
+        "chips": ["value case", "KPI's", "personas"]
+      },
+      {
+        "id": "mensen",
+        "tag": "Stap 02",
+        "label": "Mensen",
+        "coord": "axis://people",
+        "shape": "capB",
+        "glyph": "figures",
+        "detailTitle": "Toptaken + user flows",
+        "detailBody": "Daarna de mensen. Wat doet je klant écht? En welke rollen aan jouw kant werken straks met de configurator?",
+        "chips": ["jobs-to-be-done", "user flows", "service blueprint"]
+      },
+      {
+        "id": "proces",
+        "tag": "Stap 03",
+        "label": "Proces",
+        "coord": "axis://process",
+        "shape": "sphereY2",
+        "glyph": "nodes",
+        "detailTitle": "Architectuur + ketens",
+        "detailBody": "Vervolgens het proces. Welke data, welke regels, welke koppelingen? Zonder dit bouw je een mooi front-end, geen schaalbaar systeem.",
+        "chips": ["data model", "regelmotor", "ERP/PIM"]
+      },
+      {
+        "id": "tech",
+        "tag": "Stap 04",
+        "label": "Technologie",
+        "coord": "axis://tech",
+        "shape": "sphereB",
+        "glyph": "chip",
+        "detailTitle": "Requirements + stack",
+        "detailBody": "Technologie komt als laatste. Pas als strategie, mensen en proces helder zijn, kiezen we de stack die past. Bouwen, kopen of een mix.",
+        "chips": ["build vs buy", "API-first", "TCO"]
+      }
+    ],
+    "phases": [
+      { "num": "01", "title": "Intake + scope", "body": "We brengen vraag, ambitie en context in beeld. Korte sessies, geen 80 pagina's vooraf." },
+      { "num": "02", "title": "Vier stappen", "body": "Strategie, Mensen, Proces, Technologie. In die volgorde, want techniek volgt op de keuzes ervoor." },
+      { "num": "03", "title": "Concept + roadmap", "body": "Eén configurator-visie met fasering, kosten en risico's. Beslismateriaal dat ook in een directie-presentatie past." },
+      { "num": "04", "title": "Go / no-go", "body": "We adviseren ook eerlijk als bouwen nu niet logisch is. Dat is de Discovery-belofte." }
+    ],
+    "cta": "Lees meer over onze aanpak",
+    "tip": "Hover of klik op een stap om de inhoud te zien. We doorlopen ze in deze volgorde voor we adviseren."
+  },
+  "contactCta": {
+    "eyebrow": "Daag ons uit",
+    "title": "Daag ons uit met jouw configurator-vraagstuk.",
+    "body": "Wat speelt er bij jou? Schrijf het hieronder. Gerke leest mee en neemt deze week persoonlijk contact op."
+  }
+}

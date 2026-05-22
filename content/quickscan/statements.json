@@ -1,0 +1,24 @@
+{
+  "core": [
+    { "id": "c1", "text": "Ons product heeft veel varianten, opties of maatwerk." },
+    { "id": "c2", "text": "Klanten stellen telkens dezelfde vragen voordat ze beslissen." },
+    { "id": "c3", "text": "Een offerte maken kost ons gemiddeld meer dan een uur." },
+    { "id": "c4", "text": "We verliezen leads omdat het keuzeproces te complex is." },
+    { "id": "c5", "text": "Onze website laat nu niet zien wát er allemaal mogelijk is." },
+    { "id": "c6", "text": "Sales en engineering zijn veel tijd kwijt aan dezelfde rekensommen." },
+    { "id": "c7", "text": "We willen méér verkopen zonder dat het team mee hoeft te groeien." },
+    { "id": "c8", "text": "Fouten in offertes of orders kosten ons regelmatig geld." },
+    { "id": "c9", "text": "We zijn klaar om dit jaar te investeren in een digitale verkoopoplossing." },
+    { "id": "c10", "text": "Ik wil graag sparren met iemand die dit vaker heeft gedaan." }
+  ],
+  "b2b": [
+    { "id": "b2b1", "text": "Onze klanten kopen pas na meerdere contactmomenten met sales.", "swapIndex": 4 },
+    { "id": "b2b2", "text": "We werken met dealers, agenten of partners die ook moeten kunnen offreren.", "swapIndex": 5 },
+    { "id": "b2b3", "text": "Een koppeling met ons ERP, CRM of PIM is voor ons belangrijk.", "swapIndex": 6 }
+  ],
+  "b2c": [
+    { "id": "b2c1", "text": "Onze klanten willen zelf online samenstellen, zonder hulp van sales.", "swapIndex": 4 },
+    { "id": "b2c2", "text": "Een visuele weergave van het eindproduct is voor onze klanten doorslaggevend.", "swapIndex": 5 },
+    { "id": "b2c3", "text": "Onze klanten haken af als ze de prijs niet direct zien, inclusief BTW.", "swapIndex": 6 }
+  ]
+}

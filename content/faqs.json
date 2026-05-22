@@ -1,0 +1,33 @@
+{
+  "aanpak": [
+    {
+      "q": "Hoe lang duurt een Discovery precies?",
+      "a": "Vier tot zes weken, afhankelijk van de complexiteit en hoeveel stakeholders we moeten betrekken. We werken niet met vage einddata: bij de kick-off staat een concrete go of no-go datum vast.",
+      "open": true
+    },
+    {
+      "q": "Kan ik na Discovery ook bij een andere partij bouwen?",
+      "a": "Ja. Alle deliverables zijn van jou en zo opgesteld dat een andere partij ermee verder kan. We hopen natuurlijk dat we de bouw mogen doen, maar we leveren geen lock-in documenten."
+    },
+    {
+      "q": "Wat als jullie advies 'no-go' is?",
+      "a": "Dan is dat het advies. Je hebt dan een onderbouwd document waarom nu niet bouwen het slimst is, plus wat er eerst op orde moet. Dat is precies de waarde van een Discovery: een dure misser voorkomen."
+    },
+    {
+      "q": "Werken jullie met onze IT-leverancier of platform?",
+      "a": "In de meeste gevallen wel. We zijn stack-agnostisch en hebben ervaring met de meeste commerce-platforms, PIM's en ERP's. De technologie-as toetst expliciet de aansluiting op wat je al hebt."
+    },
+    {
+      "q": "Hebben jullie dit eerder voor mijn branche gedaan?",
+      "a": "Waarschijnlijk wel. We hebben configurators gebouwd voor retail (Intergamma), maatwerk fietsen (Van Raam), bouwmaterialen (Fetim) en consumentenproducten (Mepal). Branches verschillen, de aanpak niet."
+    },
+    {
+      "q": "Wie zit er bij jullie aan tafel?",
+      "a": "Een strateeg, een UX lead, een technisch architect en een delivery lead. Geen junior team. De mensen die Discovery doen, blijven beschikbaar in de bouw als het zover komt."
+    },
+    {
+      "q": "Wat kost een Discovery en wat een bouwtraject?",
+      "a": "Discovery heeft een vaste scope en vaste prijs. Bouw is afhankelijk van de fasering die uit Discovery komt. Concrete cijfers krijg je in een gesprek, zodat we ze direct kunnen koppelen aan jouw situatie."
+    }
+  ]
+}
