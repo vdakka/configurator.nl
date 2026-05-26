@@ -14,6 +14,7 @@ For raster (PNG/WebP):
 import os
 import re
 import sys
+from typing import Optional
 from xml.etree import ElementTree as ET
 
 try:
@@ -53,34 +54,69 @@ LOGOS = [
 ]
 
 
-def process_svg(src: str, out: str) -> None:
-    """Set every fill in the SVG to the brand color, leaving 'none' alone.
+def _hex_brightness(hex_value: str) -> Optional[float]:
+    """Return brightness (0-255) of a hex color, or None if not parseable."""
+    h = hex_value.strip().lstrip("#")
+    if len(h) == 3:
+        h = "".join(c + c for c in h)
+    if len(h) != 6:
+        return None
+    try:
+        r = int(h[0:2], 16)
+        g = int(h[2:4], 16)
+        b = int(h[4:6], 16)
+        return (r + g + b) / 3
+    except ValueError:
+        return None
 
-    If the SVG has a 'background path' (the logo was originally white-on-color),
-    drop it: caller should pass `drop_first_path=True` for those logos.
+
+def _brand_attrs_for(brightness: float) -> str:
+    """Map original-fill brightness to brand-color + fill-opacity attributes.
+
+    Dark sources (the actual logo line) get full opacity Happy Blue. Lighter
+    sources (highlight faces of a 3D icon) get reduced opacity so they read as
+    lighter shades while staying on-brand.
+    """
+    if brightness < 80:
+        opacity = 1.0
+    elif brightness < 160:
+        opacity = 0.6
+    elif brightness < 220:
+        opacity = 0.35
+    else:
+        opacity = 0.18
+    if opacity >= 0.99:
+        return f'fill="{BRAND_COLOR}"'
+    return f'fill="{BRAND_COLOR}" fill-opacity="{opacity:.2f}"'
+
+
+def process_svg(src: str, out: str) -> None:
+    """Convert SVG fills to monochrome Happy Blue, preserving relative depth.
+
+    Lighter original colors render at reduced fill-opacity so 3D logos (e.g.
+    the Fetim cube with light/medium/dark faces) retain visible depth on the
+    white strip background.
     """
     with open(src, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # GAMMA-style logos have a first <path> covering the whole viewBox as the
-    # background. We detect that pattern (path d starting with M0... h<width>)
-    # and drop just that one path before recoloring.
-    # Match: <path d="M{x},{y}h{w}v{h}..." fill="..." />
+    # Drop a "background path" if the SVG opens with a rectangle path covering
+    # the whole viewBox (typical of GAMMA-style: colored bg + white wordmark).
     bg_pattern = re.compile(
         r'<path[^>]*\sd="M\s*[\d.\-,]+\s*h[\d.\-,]+\s*v[\d.\-,]+[^"]*"[^>]*fill="[^"]+"[^/]*/>',
     )
     match = bg_pattern.search(content)
     if match:
-        # Only drop if it's clearly a rectangle path (M,h,v sequence)
         content = content[: match.start()] + content[match.end():]
 
-    # Replace fill="..." (any color including hex/named) with brand color.
-    # Leave 'none' fills alone so cut-outs stay intact.
     def replace_fill(match: re.Match) -> str:
         value = match.group(1)
         if value.lower() in ("none", "transparent"):
             return match.group(0)
-        return f'fill="{BRAND_COLOR}"'
+        brightness = _hex_brightness(value)
+        if brightness is None:
+            return f'fill="{BRAND_COLOR}"'
+        return _brand_attrs_for(brightness)
 
     content = re.sub(r'fill="([^"]+)"', replace_fill, content)
 
@@ -88,6 +124,14 @@ def process_svg(src: str, out: str) -> None:
         value = match.group(1).strip()
         if value.lower() in ("none", "transparent"):
             return match.group(0)
+        brightness = _hex_brightness(value)
+        if brightness is None:
+            return f"fill:{BRAND_COLOR}"
+        # Inline style — emulate the opacity via fill-opacity in the same style.
+        attrs = _brand_attrs_for(brightness)
+        if "fill-opacity" in attrs:
+            opacity = attrs.split('fill-opacity="')[1].split('"')[0]
+            return f"fill:{BRAND_COLOR};fill-opacity:{opacity}"
         return f"fill:{BRAND_COLOR}"
 
     content = re.sub(r'fill:\s*([^;"\s]+)', replace_style_fill, content)

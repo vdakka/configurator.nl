@@ -13,12 +13,12 @@ import type { HomepageContent } from '@/lib/content';
 type Logo = { slug: string; name: string; ext: 'svg' | 'png' };
 
 function LogoTile({ logo, ariaHidden = false }: { logo: Logo; ariaHidden?: boolean }) {
-  // Fixed 160×48 box with object-contain so all logos render at the same
-  // perceived size regardless of native aspect ratio. Wide wordmark logos
-  // (Skantrae, SolarNRG) get scaled down; square logos (Karwei) center.
+  // Tiles render in a 140×56 box with object-contain. Wide wordmark logos
+  // (Skantrae, SolarNRG) scale down to fit width; portrait/square logos
+  // (Karwei, Leen Bakker) fill the height and feel less "lost".
   return (
     <li
-      className="mr-12 flex h-12 w-[160px] shrink-0 items-center justify-center"
+      className="mr-10 flex h-14 w-[140px] shrink-0 items-center justify-center"
       aria-label={ariaHidden ? undefined : logo.name}
       aria-hidden={ariaHidden || undefined}
     >
@@ -26,8 +26,8 @@ function LogoTile({ logo, ariaHidden = false }: { logo: Logo; ariaHidden?: boole
         src={`/logos/${logo.slug}.${logo.ext}`}
         alt={ariaHidden ? '' : logo.name}
         width={200}
-        height={48}
-        className="max-h-12 max-w-full object-contain"
+        height={56}
+        className="max-h-14 max-w-full object-contain"
         unoptimized={logo.ext === 'svg'}
       />
     </li>
