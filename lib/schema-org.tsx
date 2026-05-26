@@ -1,5 +1,26 @@
 import type { FAQItem } from './content';
 
+export function WebSiteSchema() {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'configurator.nl',
+    url: 'https://configurator.nl',
+    inLanguage: 'nl-NL',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Happy Horizon',
+      url: 'https://happyhorizon.com',
+    },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
 export function OrganizationSchema() {
   const data = {
     '@context': 'https://schema.org',

@@ -23,7 +23,6 @@ export type HomepageContent = {
   trustStrip: {
     label: string;
     logos: string[];
-    quote?: { text: string; name: string; role: string; company: string };
   };
   marketShift: {
     eyebrow: string;

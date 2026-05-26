@@ -3,7 +3,7 @@ import { Montserrat, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/chrome/Header';
 import { Footer } from '@/components/chrome/Footer';
-import { OrganizationSchema } from '@/lib/schema-org';
+import { OrganizationSchema, WebSiteSchema } from '@/lib/schema-org';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -31,9 +31,18 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'nl_NL',
     siteName: 'configurator.nl',
+    images: [
+      {
+        url: '/og/homepage.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'configurator.nl — Configuratoren die werken voor jouw business',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
+    images: ['/og/homepage.jpg'],
   },
 };
 
@@ -46,6 +55,7 @@ export default function RootLayout({
     <html lang="nl" className={`${montserrat.variable} ${jetbrains.variable}`}>
       <body className="flex min-h-screen flex-col">
         <OrganizationSchema />
+        <WebSiteSchema />
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />

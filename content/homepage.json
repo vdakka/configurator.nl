@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "Productconfigurator laten bouwen",
+    "title": "Productconfigurator laten bouwen | configurator.nl door Happy Horizon",
     "description": "Configurators die werken voor je klant én je bedrijfsproces. Guided selling, configuratie en visualisatie in één, geïntegreerd in je systeemlandschap."
   },
   "hero": {
@@ -21,13 +21,7 @@
   },
   "trustStrip": {
     "label": "Configuratoren live voor",
-    "logos": ["Gamma", "Karwei", "Praxis", "Leen Bakker", "Van Raam", "FETIM"],
-    "quote": {
-      "text": "Een offerte raamdecoratie ging bij ons van drie dagen naar twintig minuten. En zonder fouten in de bestelbon.",
-      "name": "Naam volgt",
-      "role": "E-commerce Lead",
-      "company": "Intergamma"
-    }
+    "logos": ["Gamma", "Karwei", "Praxis", "Leen Bakker", "Van Raam", "FETIM"]
   },
   "marketShift": {
     "eyebrow": "Definitie",
