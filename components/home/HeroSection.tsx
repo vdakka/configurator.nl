@@ -10,15 +10,12 @@ export function HeroSection({ hero }: { hero: HomepageContent['hero'] }) {
       <SectionId num="01" label="hero" tone="light" />
       <div className="absolute inset-0 dot-grid opacity-50" aria-hidden />
 
-      {/* Floating shapes */}
-      <div className="pointer-events-none absolute -right-8 top-[6%] animate-float1" aria-hidden>
-        <ThreeDShape shape="bigTubeY" size={260} />
-      </div>
-      <div className="pointer-events-none absolute -left-6 bottom-[14%] animate-float2 opacity-90" aria-hidden>
-        <ThreeDShape shape="capB" size={140} />
-      </div>
-      <div className="pointer-events-none absolute right-[24%] bottom-[8%] animate-float3 opacity-70" aria-hidden>
-        <ThreeDShape shape="smallCubeY" size={110} />
+      {/* Subtiele background-shape linksonder, blijft op alle viewports */}
+      <div
+        className="pointer-events-none absolute -left-10 bottom-[10%] animate-float2 opacity-30 lg:opacity-50"
+        aria-hidden
+      >
+        <ThreeDShape shape="capB" size={120} />
       </div>
 
       <div className="relative mx-auto grid max-w-page gap-10 px-6 sm:px-8 lg:grid-cols-[7fr_5fr] lg:items-center">
@@ -50,10 +47,27 @@ export function HeroSection({ hero }: { hero: HomepageContent['hero'] }) {
           </p>
         </div>
 
-        {/* Right-side visual breathing room — keeps the hero from feeling text-heavy */}
-        <div className="relative hidden h-[280px] lg:block" aria-hidden>
-          <div className="absolute right-12 top-1/2 -translate-y-1/2 animate-float3">
-            <ThreeDShape shape="sphereY2" size={120} />
+        {/* Right-side 3D-compositie — hero anker, alleen desktop */}
+        <div className="relative hidden h-[440px] lg:block" aria-hidden>
+          {/* Lens-flare achter sphere */}
+          <div
+            className="pointer-events-none absolute right-[6%] top-1/2 h-[440px] w-[440px] -translate-y-1/2 rounded-full opacity-50"
+            style={{
+              background:
+                'radial-gradient(circle, rgba(252,229,18,0.18) 0%, rgba(252,229,18,0) 60%)',
+            }}
+          />
+          {/* Big Tube Blue (secundair, achter sphere) */}
+          <div className="absolute right-[2%] top-[8%] animate-float2">
+            <ThreeDShape shape="bigTubeB" size={200} />
+          </div>
+          {/* Sphere Yellow (groot, primair anker) */}
+          <div className="absolute right-[18%] top-1/2 -translate-y-1/2 animate-float1-slow">
+            <ThreeDShape shape="sphereY" size={300} priority />
+          </div>
+          {/* Small Cube Yellow (foreground accent) */}
+          <div className="absolute bottom-[6%] right-[42%] animate-float3">
+            <ThreeDShape shape="smallCubeY" size={100} />
           </div>
         </div>
       </div>

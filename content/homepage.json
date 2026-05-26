@@ -22,10 +22,15 @@
   "trustStrip": {
     "label": "Configuratoren live voor",
     "logos": ["Gamma", "Karwei", "Praxis", "Leen Bakker", "Van Raam", "FETIM"],
-    "meta": "en 12 meer · sinds 2017"
+    "quote": {
+      "text": "Een offerte raamdecoratie ging bij ons van drie dagen naar twintig minuten. En zonder fouten in de bestelbon.",
+      "name": "Naam volgt",
+      "role": "E-commerce Lead",
+      "company": "Intergamma"
+    }
   },
   "marketShift": {
-    "eyebrow": "Wat een configurator écht is",
+    "eyebrow": "Definitie",
     "title": "Een configurator is jouw digitale adviseur. Niet enkel een formulier.",
     "lede": "De meeste configuratoren kunnen één ding goed. Guided selling, óf configuratie, óf visualisatie. Wij geloven dat een configurator pas écht waarde levert als die drie samenkomen, en als hij, volledig geïntegreerd, praat met de systemen waar de rest van je bedrijf op draait.",
     "blocks": [

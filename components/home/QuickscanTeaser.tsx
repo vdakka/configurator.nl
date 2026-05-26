@@ -78,9 +78,16 @@ export function QuickscanTeaser({
           {/* Front card */}
           <Link
             href="/quickscan?start=1"
-            className="relative block w-[320px] rounded-3xl bg-white p-8 shadow-[0_30px_70px_-20px_rgba(7,7,51,0.35),0_8px_20px_-8px_rgba(7,7,51,0.15)] transition-transform hover:-translate-y-1 hover:rotate-[-1deg] sm:w-[340px]"
+            aria-label="Start de quickscan (voorbeeldkaart)"
+            className="group/card relative block w-[320px] rounded-3xl bg-white p-8 shadow-[0_30px_70px_-20px_rgba(7,7,51,0.35),0_8px_20px_-8px_rgba(7,7,51,0.15)] transition-transform hover:-translate-y-1 hover:rotate-[-1deg] sm:w-[340px]"
             style={{ transform: 'rotate(-3deg)' }}
           >
+            <span
+              aria-hidden
+              className="absolute -right-2 -top-2 rounded-full bg-hb px-2.5 py-1 font-mono text-[9px] font-bold uppercase tracking-mono text-hy shadow-[0_6px_16px_-4px_rgba(7,7,51,0.35)]"
+            >
+              Voorbeeld
+            </span>
             <span className="mono-label text-[10px] text-hb-sec">{data.exampleLabel}</span>
             <p className="mt-6 text-[20px] font-black leading-snug tracking-heading text-hb sm:text-[22px]">
               {data.exampleStatement}

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getAanpak, getAanpakFAQ } from '@/lib/content';
-import { Breadcrumb } from '@/components/aanpak/Breadcrumb';
+import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { SlimHero } from '@/components/aanpak/SlimHero';
 import { AnchoredStats } from '@/components/aanpak/AnchoredStats';
 import { DefinitionAudienceBlock } from '@/components/aanpak/DefinitionAudienceBlock';
