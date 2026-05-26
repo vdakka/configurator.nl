@@ -75,7 +75,16 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col gap-4 pt-8 text-[12px] text-white/50 md:flex-row md:items-center md:justify-between">
-          <p>© 2026 Happy Horizon</p>
+          <div className="flex flex-wrap items-center gap-4">
+            <p>© 2026 Happy Horizon</p>
+            <span
+              aria-hidden
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-eyebrow text-white/55"
+            >
+              <span className="h-1.5 w-1.5 animate-livePulse rounded-full bg-[#2bb673]" />
+              v1.0 · NL · stable
+            </span>
+          </div>
           <ul className="flex flex-wrap gap-6">
             {LEGAL_LINKS.map((l) => (
               <li key={l.href}>

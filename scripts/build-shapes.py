@@ -18,7 +18,7 @@ except ImportError:
     print("Pillow is required: python3 -m pip install --user Pillow", file=sys.stderr)
     sys.exit(1)
 
-BRAND_DIR = "/Users/gerke/Desktop/3d Happy huisstijl/3D Shapes CMYK 300DPI 3"
+BRAND_DIR = "/Users/gerke/Desktop/3d Happy huisstijl/3D Shapes CMYK 300DPI"
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "public", "shapes")
 OUT_DIR = os.path.abspath(OUT_DIR)
 MAX_WIDTH = 800  # target max width for the optimized PNG
@@ -33,6 +33,12 @@ SHAPES = [
     ("tube-blue-0.png", "Small Tube/Dark_Blue_Gloss/Small Tube_Dark_Blue_Gloss_0.psd"),
     ("tube-blue-2.png", "Small Tube/Dark_Blue_Gloss/Small Tube_Dark_Blue_Gloss_2.psd"),
     ("cube-yellow-0.png", "Big Cube/Yellow_Gloss/Big Cube_Yellow_Gloss_0.psd"),
+    ("bigtube-yellow-0.png", "Big Tube/Yellow_Gloss/Big Tube_Yellow_Gloss_0.psd"),
+    ("bigtube-yellow-2.png", "Big Tube/Yellow_Gloss/Big Tube_Yellow_Gloss_2.psd"),
+    ("bigtube-blue-0.png", "Big Tube/Dark_Blue_Gloss/Big Tube_Dark_Blue_Gloss_0.psd"),
+    ("smallcube-yellow-0.png", "Small Cube/Yellow_Gloss/Small Cube_Yellow_Gloss_0.psd"),
+    ("smallcube-yellow-2.png", "Small Cube/Yellow_Gloss/Small Cube_Yellow_Gloss_2.psd"),
+    ("smallcube-blue-0.png", "Small Cube/Dark_Blue_Gloss/Small Cube_Dark_Blue_Gloss_0.psd"),
 ]
 
 

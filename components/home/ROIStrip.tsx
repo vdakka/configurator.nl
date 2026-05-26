@@ -1,8 +1,10 @@
+import { SectionId } from '@/components/ui/SectionId';
 import type { StatsConfig } from '@/lib/content';
 
 export function ROIStrip({ stats }: { stats: StatsConfig }) {
   return (
-    <section className="bg-hg py-20 text-hb sm:py-24">
+    <section className="relative bg-hg py-20 text-hb sm:py-24">
+      <SectionId num="04" label="kpi" />
       <div className="mx-auto max-w-page px-6 sm:px-8">
         <div className="grid items-end gap-10 border-b border-hg-line pb-10 md:grid-cols-[1fr_auto]">
           <h2 className="max-w-[760px] text-[28px] font-black leading-[1.06] tracking-display sm:text-[36px] md:text-[42px]">
@@ -15,9 +17,12 @@ export function ROIStrip({ stats }: { stats: StatsConfig }) {
         </div>
 
         <ul className="mt-12 grid gap-12 md:grid-cols-3">
-          {stats.heroStats.map((s) => (
+          {stats.heroStats.map((s, i) => (
             <li key={s.label} className="border-l-2 border-hy pl-6">
-              <div className="font-black leading-none tracking-display text-hb">
+              <span className="mono-label block text-[10px] text-hb-sec">
+                KPI {String(i + 1).padStart(2, '0')}
+              </span>
+              <div className="mt-4 font-black leading-none tracking-display text-hb">
                 <span className="text-[44px] sm:text-[60px] md:text-[68px]">
                   {s.display}
                 </span>

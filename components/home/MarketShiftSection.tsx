@@ -1,4 +1,6 @@
 import { Eyebrow } from '@/components/ui/Eyebrow';
+import { ThreeDShape } from '@/components/ui/ThreeDShape';
+import { SectionId } from '@/components/ui/SectionId';
 import type { HomepageContent } from '@/lib/content';
 
 export function MarketShiftSection({
@@ -7,8 +9,18 @@ export function MarketShiftSection({
   data: HomepageContent['marketShift'];
 }) {
   return (
-    <section className="bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-page px-6 sm:px-8">
+    <section className="relative overflow-hidden bg-white py-24 sm:py-32">
+      <SectionId num="03" label="wat" />
+      <div className="pointer-events-none absolute inset-0 dot-grid-dark opacity-50" aria-hidden />
+
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-12 bottom-[12%] animate-float2 opacity-60"
+      >
+        <ThreeDShape shape="smallCubeY" size={180} />
+      </div>
+
+      <div className="relative mx-auto max-w-page px-6 sm:px-8">
         <Eyebrow>{data.eyebrow}</Eyebrow>
 
         <div className="mt-8 grid gap-14 lg:grid-cols-[7fr_5fr] lg:gap-20">

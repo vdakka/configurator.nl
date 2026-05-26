@@ -33,7 +33,6 @@ export type HomepageContent = {
     lede: string;
     meta: Array<{ value: string; label: string }>;
     cta: string;
-    secondary: string;
     exampleStatement: string;
     exampleLabel: string;
   };
@@ -78,7 +77,18 @@ export type AanpakContent = {
   axes: Array<{
     id: string;
     tag: string;
-    shape: 'sphereY' | 'sphereY2' | 'sphereB' | 'capB';
+    shape:
+      | 'sphereY'
+      | 'sphereY2'
+      | 'sphereB'
+      | 'capB'
+      | 'bigTubeY'
+      | 'bigTubeY2'
+      | 'bigTubeB'
+      | 'smallCubeY'
+      | 'smallCubeY2'
+      | 'smallCubeB'
+      | 'cubeY';
     title: string;
     titleSub: string;
     intro: string;

@@ -4,6 +4,7 @@
  * en pas de map hieronder aan om met <Image> te renderen.
  */
 
+import { SectionId } from '@/components/ui/SectionId';
 import type { HomepageContent } from '@/lib/content';
 
 const LOGO_STYLES: Record<string, string> = {
@@ -21,9 +22,11 @@ const FALLBACK_STYLE = 'bg-white text-hb border border-hg-line font-bold';
 
 function LogoTile({ name }: { name: string }) {
   const style = LOGO_STYLES[name] ?? FALLBACK_STYLE;
+  // margin-right (not gap) keeps the marquee seamless: -50% translate matches
+  // the duplicate position exactly, including the trailing right margin.
   return (
     <li
-      className={`flex h-12 min-w-[120px] shrink-0 items-center justify-center rounded-md px-5 text-[15px] ${style}`}
+      className={`mr-4 flex h-12 min-w-[120px] shrink-0 items-center justify-center rounded-md px-5 text-[15px] ${style}`}
       aria-label={name}
     >
       {name}
@@ -36,7 +39,8 @@ export function TrustStrip({ trust }: { trust: HomepageContent['trustStrip'] }) 
   // brings the second half exactly into the position of the first.
   const loop = [...trust.logos, ...trust.logos];
   return (
-    <section className="border-b border-hg bg-white py-12">
+    <section className="relative border-b border-hg bg-white py-12">
+      <SectionId num="02" label="klanten" />
       <div className="mx-auto max-w-page px-6 sm:px-8">
         <span className="mono-label mb-6 block text-[11px] text-hb-sec">
           {trust.label}
@@ -55,7 +59,7 @@ export function TrustStrip({ trust }: { trust: HomepageContent['trustStrip'] }) 
         aria-label="Klantlogo's, doorlopende slider"
       >
         <ul
-          className="flex w-max items-center gap-4 animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none"
+          className="flex w-max items-center animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none"
           aria-hidden={false}
         >
           {loop.map((name, i) => (

@@ -56,7 +56,6 @@
       { "value": "→", "label": "Direct uitslag" }
     ],
     "cta": "Start de quickscan",
-    "secondary": "Of bekijk hoe het werkt",
     "exampleStatement": "Een offerte maken kost ons gemiddeld meer dan een uur.",
     "exampleLabel": "Stelling · 03 / 10"
   },
