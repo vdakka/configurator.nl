@@ -13,9 +13,12 @@ import type { HomepageContent } from '@/lib/content';
 type Logo = { slug: string; name: string; ext: 'svg' | 'png' };
 
 function LogoTile({ logo, ariaHidden = false }: { logo: Logo; ariaHidden?: boolean }) {
+  // Fixed 160×48 box with object-contain so all logos render at the same
+  // perceived size regardless of native aspect ratio. Wide wordmark logos
+  // (Skantrae, SolarNRG) get scaled down; square logos (Karwei) center.
   return (
     <li
-      className="mr-12 flex h-12 shrink-0 items-center"
+      className="mr-12 flex h-12 w-[160px] shrink-0 items-center justify-center"
       aria-label={ariaHidden ? undefined : logo.name}
       aria-hidden={ariaHidden || undefined}
     >
@@ -24,7 +27,7 @@ function LogoTile({ logo, ariaHidden = false }: { logo: Logo; ariaHidden?: boole
         alt={ariaHidden ? '' : logo.name}
         width={200}
         height={48}
-        className="h-12 w-auto"
+        className="max-h-12 max-w-full object-contain"
         unoptimized={logo.ext === 'svg'}
       />
     </li>
