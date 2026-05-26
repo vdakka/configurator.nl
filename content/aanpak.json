@@ -64,7 +64,7 @@
     {
       "id": "mensen",
       "tag": "As 02",
-      "shape": "capB",
+      "shape": "smallCubeB",
       "title": "Toptaken en user flows.",
       "titleSub": "Wat doet de klant écht?",
       "intro": "Een configurator is in de basis een gesprek tussen jou en je klant, in software. We brengen de toptaken in kaart, de momenten van twijfel, en het hulpniveau dat daarbij hoort. Inclusief de mensen aan jouw kant die met de configurator gaan werken.",
@@ -84,7 +84,7 @@
     {
       "id": "proces",
       "tag": "As 03",
-      "shape": "sphereY2",
+      "shape": "bigTubeY",
       "title": "Architectuur en ketens.",
       "titleSub": "Hoe vloeit een order door je organisatie?",
       "intro": "De configurator raakt sales, productie, ERP, service. We ontrafelen waar welke data woont, welke regels valideren wat, en hoe een order door je organisatie loopt. Zonder dit in kaart bouw je een mooi front-end, maar geen schaalbaar systeem.",
@@ -104,7 +104,7 @@
     {
       "id": "tech",
       "tag": "As 04",
-      "shape": "sphereB",
+      "shape": "cubeY",
       "title": "Requirements en stack.",
       "titleSub": "Headless, monolithisch, build of buy?",
       "intro": "Een technologie-keuze die past bij je team, je horizon en je budget. We toetsen kandidaat-stacks, beoordelen build vs buy, en geven concreet aan welke risico's je waar zit. Headless of API-first is geen religie, het is een keuze.",

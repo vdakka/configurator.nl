@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
+import { ThreeDShape } from '@/components/ui/ThreeDShape';
+import { SectionId } from '@/components/ui/SectionId';
 import type { HomepageContent } from '@/lib/content';
 
 export function QuickscanTeaser({
@@ -10,6 +12,7 @@ export function QuickscanTeaser({
 }) {
   return (
     <section className="relative overflow-hidden bg-hy py-24 text-hb sm:py-32">
+      <SectionId num="06" label="quickscan" />
       {/* Faint blue background circles */}
       <span
         aria-hidden
@@ -21,6 +24,13 @@ export function QuickscanTeaser({
         className="pointer-events-none absolute -top-32 -right-32 h-[480px] w-[480px] rounded-full"
         style={{ background: 'rgba(7,7,51,0.05)' }}
       />
+
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[8%] top-[8%] animate-float3 opacity-90"
+      >
+        <ThreeDShape shape="smallCubeY2" size={130} />
+      </div>
 
       <div className="relative mx-auto grid max-w-page gap-16 px-6 sm:px-8 lg:grid-cols-[6fr_5fr] lg:items-center">
         {/* LEFT: copy */}
@@ -44,16 +54,10 @@ export function QuickscanTeaser({
             ))}
           </ul>
 
-          <div className="mt-10 flex flex-wrap items-center gap-6">
+          <div className="mt-10">
             <Button href="/quickscan?start=1" variant="dark">
               {data.cta} <span aria-hidden>→</span>
             </Button>
-            <Link
-              href="/quickscan?start=1"
-              className="text-[14px] font-bold underline decoration-2 underline-offset-4 hover:text-hb-soft"
-            >
-              {data.secondary}
-            </Link>
           </div>
         </div>
 

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { ThreeDShape } from '@/components/ui/ThreeDShape';
+import { SectionId } from '@/components/ui/SectionId';
 import { ContactForm } from './ContactForm';
 import type { TeamMember } from '@/lib/content';
 
@@ -17,6 +18,7 @@ export function ContactCTABlock({
 }) {
   return (
     <section className="relative overflow-hidden bg-white py-16 text-hb sm:py-20">
+      <SectionId num="07" label="contact" />
       <div
         aria-hidden
         className="pointer-events-none absolute -left-24 top-[18%] animate-float1-slow opacity-60"
@@ -29,10 +31,16 @@ export function ContactCTABlock({
       >
         <ThreeDShape shape="capB" size={160} />
       </div>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-[6%] top-[4%] animate-float3 opacity-50"
+      >
+        <ThreeDShape shape="smallCubeB" size={110} />
+      </div>
 
       <div className="relative mx-auto grid max-w-page items-start gap-16 px-6 sm:px-8 lg:grid-cols-2 lg:gap-20">
         {/* LEFT: copy + Gerke */}
-        <div className="flex h-full flex-col">
+        <div>
           <Eyebrow>{eyebrow}</Eyebrow>
           <h2 className="mt-6 text-[36px] font-black leading-[1.02] tracking-display sm:text-[44px] md:text-[56px]">
             {title}
@@ -43,7 +51,7 @@ export function ContactCTABlock({
             </p>
           )}
 
-          <div className="mt-auto flex items-center gap-4 pt-12">
+          <div className="mt-8 flex items-center gap-4">
             <div className="relative h-[140px] w-[140px] shrink-0 overflow-hidden rounded-full bg-hy">
               <Image
                 src={gerke.portrait}
