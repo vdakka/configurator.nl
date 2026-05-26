@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getCaseList } from '@/lib/content';
 import { Eyebrow } from '@/components/ui/Eyebrow';
+import { Breadcrumb } from '@/components/ui/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Configurator cases en voorbeelden',
@@ -13,6 +14,14 @@ export const metadata: Metadata = {
 export default function CasesPage() {
   const cases = getCaseList();
   return (
+    <>
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Cases', href: '/cases' },
+        ]}
+        tone="light"
+      />
     <section className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-page px-6 sm:px-8">
         <Eyebrow>Cases</Eyebrow>
@@ -47,5 +56,6 @@ export default function CasesPage() {
         </div>
       </div>
     </section>
+    </>
   );
 }

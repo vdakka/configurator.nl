@@ -15,7 +15,12 @@ export function generateMetadata(): Metadata {
     title: seo.title,
     description: seo.description,
     alternates: { canonical: '/' },
-    openGraph: { title: seo.title, description: seo.description, url: '/' },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: '/',
+      images: ['/og/homepage.jpg'],
+    },
   };
 }
 

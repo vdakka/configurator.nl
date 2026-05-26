@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getCase, getCaseList } from '@/lib/content';
 import { Eyebrow } from '@/components/ui/Eyebrow';
+import { Breadcrumb } from '@/components/ui/Breadcrumb';
 
 export function generateStaticParams() {
   return getCaseList().map((c) => ({ slug: c.slug }));
@@ -24,11 +24,17 @@ export default function CaseDetailPage({ params }: { params: { slug: string } })
   if (!data) notFound();
   const { meta, body } = data;
   return (
+    <>
+      <Breadcrumb
+        items={[
+          { label: 'Home', href: '/' },
+          { label: 'Cases', href: '/cases' },
+          { label: meta.title, href: `/cases/${params.slug}` },
+        ]}
+        tone="light"
+      />
     <article className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-[900px] px-6 sm:px-8">
-        <Link href="/cases" className="font-mono text-[12px] text-hb-sec hover:text-hb">
-          ← Alle cases
-        </Link>
         <Eyebrow>Case</Eyebrow>
         <h1 className="mt-6 text-[36px] font-black leading-[1.05] tracking-display sm:text-[48px] md:text-[60px]">
           {meta.title}
@@ -49,5 +55,6 @@ export default function CaseDetailPage({ params }: { params: { slug: string } })
         </div>
       </div>
     </article>
+    </>
   );
 }

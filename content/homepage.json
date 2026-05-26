@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "Productconfigurator laten bouwen",
+    "title": "Productconfigurator laten bouwen | configurator.nl door Happy Horizon",
     "description": "Configurators die werken voor je klant én je bedrijfsproces. Guided selling, configuratie en visualisatie in één, geïntegreerd in je systeemlandschap."
   },
   "hero": {
@@ -21,11 +21,10 @@
   },
   "trustStrip": {
     "label": "Configuratoren live voor",
-    "logos": ["Gamma", "Karwei", "Praxis", "Leen Bakker", "Van Raam", "FETIM"],
-    "meta": "en 12 meer · sinds 2017"
+    "logos": ["Gamma", "Karwei", "Praxis", "Leen Bakker", "Van Raam", "FETIM"]
   },
   "marketShift": {
-    "eyebrow": "Wat een configurator écht is",
+    "eyebrow": "Definitie",
     "title": "Een configurator is jouw digitale adviseur. Niet enkel een formulier.",
     "lede": "De meeste configuratoren kunnen één ding goed. Guided selling, óf configuratie, óf visualisatie. Wij geloven dat een configurator pas écht waarde levert als die drie samenkomen, en als hij, volledig geïntegreerd, praat met de systemen waar de rest van je bedrijf op draait.",
     "blocks": [

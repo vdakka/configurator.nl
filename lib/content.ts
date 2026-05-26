@@ -20,7 +20,10 @@ export type HomepageContent = {
     primaryCta: string;
     secondaryCta: string;
   };
-  trustStrip: { label: string; logos: string[]; meta: string };
+  trustStrip: {
+    label: string;
+    logos: string[];
+  };
   marketShift: {
     eyebrow: string;
     title: string;

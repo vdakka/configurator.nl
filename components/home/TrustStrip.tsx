@@ -66,6 +66,7 @@ export function TrustStrip({ trust }: { trust: HomepageContent['trustStrip'] }) 
           ))}
         </ul>
       </div>
+
     </section>
   );
 }
