@@ -1,43 +1,37 @@
-/**
- * Trust strip — auto-scrolling marquee van klantlogo's.
- * Tekst-tiles fungeren als placeholder; vervang door echte SVGs in /public/logos/
- * en pas de map hieronder aan om met <Image> te renderen.
- */
-
+import Image from 'next/image';
 import { SectionId } from '@/components/ui/SectionId';
 import type { HomepageContent } from '@/lib/content';
 
-const LOGO_STYLES: Record<string, string> = {
-  Gamma: 'bg-[#005ca9] text-white font-black tracking-wider',
-  Karwei: 'bg-black text-white font-black uppercase tracking-widest text-[15px]',
-  Praxis: 'bg-[#ffd400] text-[#e30613] font-black uppercase italic tracking-tight',
-  'Leen Bakker': 'bg-[#e6007e] text-white font-bold tracking-tight',
-  'Van Raam': 'bg-white text-[#e30613] font-black uppercase tracking-tight border border-hg-line',
-  FETIM: 'bg-white text-[#3a3a3a] font-bold tracking-wider border border-hg-line',
-  Skantrae: 'bg-white text-[#003c71] font-black uppercase tracking-tight border border-hg-line',
-  CanDo: 'bg-[#ff8c1a] text-[#1a1a1a] font-black uppercase tracking-tight',
-};
+/**
+ * Klantlogo-strip met oneindige marquee. Bronnen liggen in /public/logos/
+ * (gegenereerd via scripts/build-logos.py — monochrome Happy Blue silhouettes).
+ *
+ * Logo-data komt uit content/homepage.json `trustStrip.logos` (slug + name +
+ * ext) zodat product owner orde en set kan aanpassen zonder code-deploy.
+ */
 
-const FALLBACK_STYLE = 'bg-white text-hb border border-hg-line font-bold';
+type Logo = { slug: string; name: string; ext: 'svg' | 'png' };
 
-function LogoTile({ name, ariaHidden = false }: { name: string; ariaHidden?: boolean }) {
-  const style = LOGO_STYLES[name] ?? FALLBACK_STYLE;
-  // margin-right (not gap) keeps the marquee seamless: -50% translate matches
-  // the duplicate position exactly, including the trailing right margin.
+function LogoTile({ logo, ariaHidden = false }: { logo: Logo; ariaHidden?: boolean }) {
   return (
     <li
-      className={`mr-4 flex h-12 min-w-[120px] shrink-0 items-center justify-center rounded-md px-5 text-[15px] ${style}`}
-      aria-label={ariaHidden ? undefined : name}
+      className="mr-12 flex h-12 shrink-0 items-center"
+      aria-label={ariaHidden ? undefined : logo.name}
       aria-hidden={ariaHidden || undefined}
     >
-      {name}
+      <Image
+        src={`/logos/${logo.slug}.${logo.ext}`}
+        alt={ariaHidden ? '' : logo.name}
+        width={200}
+        height={48}
+        className="h-12 w-auto"
+        unoptimized={logo.ext === 'svg'}
+      />
     </li>
   );
 }
 
 export function TrustStrip({ trust }: { trust: HomepageContent['trustStrip'] }) {
-  // First half is read by screenreaders; the second half is a visual duplicate
-  // for seamless marquee loop and is hidden from assistive tech.
   return (
     <section className="relative border-b border-hg bg-white py-12">
       <SectionId num="02" label="klanten" />
@@ -58,15 +52,14 @@ export function TrustStrip({ trust }: { trust: HomepageContent['trustStrip'] }) 
         aria-label="Klantlogo's"
       >
         <ul className="flex w-max items-center animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none">
-          {trust.logos.map((name) => (
-            <LogoTile key={`a-${name}`} name={name} />
+          {trust.logos.map((logo) => (
+            <LogoTile key={`a-${logo.slug}`} logo={logo} />
           ))}
-          {trust.logos.map((name) => (
-            <LogoTile key={`b-${name}`} name={name} ariaHidden />
+          {trust.logos.map((logo) => (
+            <LogoTile key={`b-${logo.slug}`} logo={logo} ariaHidden />
           ))}
         </ul>
       </div>
-
     </section>
   );
 }

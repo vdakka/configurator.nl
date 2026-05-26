@@ -21,7 +21,18 @@
   },
   "trustStrip": {
     "label": "Configuratoren live voor",
-    "logos": ["Gamma", "Karwei", "Praxis", "Leen Bakker", "Van Raam", "FETIM"]
+    "logos": [
+      { "slug": "gamma", "name": "Gamma", "ext": "svg" },
+      { "slug": "karwei", "name": "Karwei", "ext": "png" },
+      { "slug": "praxis", "name": "Praxis", "ext": "png" },
+      { "slug": "leen-bakker", "name": "Leen Bakker", "ext": "png" },
+      { "slug": "van-raam", "name": "Van Raam", "ext": "png" },
+      { "slug": "fetim", "name": "FETIM", "ext": "svg" },
+      { "slug": "skantrae", "name": "Skantrae", "ext": "png" },
+      { "slug": "solarnrg", "name": "SolarNRG", "ext": "png" },
+      { "slug": "trendhopper", "name": "Trendhopper", "ext": "png" },
+      { "slug": "vogels", "name": "Vogel's", "ext": "png" }
+    ]
   },
   "marketShift": {
     "eyebrow": "Definitie",

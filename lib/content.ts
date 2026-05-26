@@ -22,7 +22,7 @@ export type HomepageContent = {
   };
   trustStrip: {
     label: string;
-    logos: string[];
+    logos: Array<{ slug: string; name: string; ext: 'svg' | 'png' }>;
   };
   marketShift: {
     eyebrow: string;
