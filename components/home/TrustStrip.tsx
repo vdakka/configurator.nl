@@ -20,14 +20,15 @@ const LOGO_STYLES: Record<string, string> = {
 
 const FALLBACK_STYLE = 'bg-white text-hb border border-hg-line font-bold';
 
-function LogoTile({ name }: { name: string }) {
+function LogoTile({ name, ariaHidden = false }: { name: string; ariaHidden?: boolean }) {
   const style = LOGO_STYLES[name] ?? FALLBACK_STYLE;
   // margin-right (not gap) keeps the marquee seamless: -50% translate matches
   // the duplicate position exactly, including the trailing right margin.
   return (
     <li
       className={`mr-4 flex h-12 min-w-[120px] shrink-0 items-center justify-center rounded-md px-5 text-[15px] ${style}`}
-      aria-label={name}
+      aria-label={ariaHidden ? undefined : name}
+      aria-hidden={ariaHidden || undefined}
     >
       {name}
     </li>
@@ -35,9 +36,8 @@ function LogoTile({ name }: { name: string }) {
 }
 
 export function TrustStrip({ trust }: { trust: HomepageContent['trustStrip'] }) {
-  // Duplicate the list once so the marquee loops seamlessly: translateX(-50%)
-  // brings the second half exactly into the position of the first.
-  const loop = [...trust.logos, ...trust.logos];
+  // First half is read by screenreaders; the second half is a visual duplicate
+  // for seamless marquee loop and is hidden from assistive tech.
   return (
     <section className="relative border-b border-hg bg-white py-12">
       <SectionId num="02" label="klanten" />
@@ -49,21 +49,20 @@ export function TrustStrip({ trust }: { trust: HomepageContent['trustStrip'] }) 
 
       <div
         className="group relative overflow-hidden"
-        // Edges fade-to-white for a clean continuous-strip feel
         style={{
           maskImage:
             'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
           WebkitMaskImage:
             'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
         }}
-        aria-label="Klantlogo's, doorlopende slider"
+        aria-label="Klantlogo's"
       >
-        <ul
-          className="flex w-max items-center animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none"
-          aria-hidden={false}
-        >
-          {loop.map((name, i) => (
-            <LogoTile key={`${name}-${i}`} name={name} />
+        <ul className="flex w-max items-center animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+          {trust.logos.map((name) => (
+            <LogoTile key={`a-${name}`} name={name} />
+          ))}
+          {trust.logos.map((name) => (
+            <LogoTile key={`b-${name}`} name={name} ariaHidden />
           ))}
         </ul>
       </div>

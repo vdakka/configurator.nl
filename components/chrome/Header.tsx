@@ -5,7 +5,7 @@ const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/aanpak', label: 'Aanpak' },
   { href: '/cases', label: 'Cases' },
-  { href: '/branches/b2b', label: 'Branches' },
+  { href: '/branches', label: 'Branches' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 
