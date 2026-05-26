@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "Discovery voor productconfigurators | Onze aanpak",
+    "title": "Discovery voor productconfiguratoren | Onze aanpak",
     "description": "Een gestructureerd onderzoek voor we ook maar één scherm tekenen. Vier tot zes weken, vaste prijs, go of no-go advies aan het eind."
   },
   "breadcrumb": [
@@ -129,7 +129,7 @@
     "phases": [
       { "week": "Week 0", "title": "Intake en scope", "body": "We brengen vraag, ambitie en context in beeld. Twee korte sessies, geen 80 pagina's vooraf. Aan het eind: een afgebakende Discovery-scope op een A4.", "who": "Jullie: directie + product / e-commerce lead. Wij: 2 mensen.", "highlight": false },
       { "week": "Week 1–2", "title": "Vier-assen onderzoek", "body": "Parallel werken aan Strategie, Mensen, Proces en Technologie. Workshops, interviews, data-analyse, technische ontdekking. Eén keer per week een sync van 30 minuten.", "who": "Jullie: beschikbaar voor ~6 interviews + 2 workshops. Wij: 3–4 mensen.", "highlight": false },
-      { "week": "Week 3–4", "title": "Concept en roadmap", "body": "We brengen de vier assen samen tot één configurator-visie, met fasering, kosten en risico's. Optioneel: een klikbaar prototype van het belangrijkste flow.", "who": "Jullie: review-sessies. Wij: volledig team.", "highlight": false },
+      { "week": "Week 3–4", "title": "Concept en roadmap", "body": "We brengen de vier assen samen tot één configurator-visie, met fasering, kosten en risico's. Optioneel: een klikbaar prototype van de belangrijkste flow.", "who": "Jullie: review-sessies. Wij: volledig team.", "highlight": false },
       { "week": "Week 5", "title": "Go of no-go", "body": "Presentatie aan jouw stuurgroep of directie. Een onderbouwd advies, geen powerpoint vol opties. Bouwen, fasen, of wachten. We adviseren ook eerlijk als nu niet het juiste moment is.", "who": "Jullie: stuurgroep. Wij: leads + strateeg.", "highlight": true }
     ]
   },
@@ -141,7 +141,7 @@
       { "num": "02", "title": "Vier-assen rapport", "body": "Strategie, Mensen, Proces en Technologie. Bevindingen, beslissingen en open vragen.", "tag": "document" },
       { "num": "03", "title": "Architectuurplaat", "body": "End-to-end systeemvisie. Welke componenten, welke data, welke koppelingen.", "tag": "diagram" },
       { "num": "04", "title": "Fasering en roadmap", "body": "Drie tot vijf fases. Wat eerst, wat later, met geschatte kosten en doorlooptijden.", "tag": "planning" },
-      { "num": "05", "title": "Klikbaar prototype", "body": "Het belangrijkste flow als interactieve demo. Concrete check op de aannames.", "tag": "prototype" },
+      { "num": "05", "title": "Klikbaar prototype", "body": "De belangrijkste flow als interactieve demo. Concrete check op de aannames.", "tag": "prototype" },
       { "num": "06", "title": "Go of no-go advies", "body": "Eerlijk en onderbouwd. Bouwen, fasen, of wachten. Inclusief risico's en aannames.", "tag": "presentatie" }
     ]
   },

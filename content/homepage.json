@@ -16,8 +16,8 @@
       "post": "jouw business."
     },
     "sub": "Een productconfigurator is je digitale adviseur. Klanten stellen hun product samen, jouw systeem valideert direct naar prijs, beschikbaarheid en productie. Wij ontwerpen en bouwen ze, van Discovery tot integratie in je IT- of systeemlandschap.",
-    "primaryCta": "Plan een vrijblijvend gesprek",
-    "secondaryCta": "Doe de quickscan"
+    "primaryCta": "Doe de quickscan",
+    "secondaryCta": "Plan een vrijblijvend gesprek"
   },
   "trustStrip": {
     "label": "Configuratoren live voor",
@@ -27,7 +27,7 @@
   "marketShift": {
     "eyebrow": "Wat een configurator écht is",
     "title": "Een configurator is jouw digitale adviseur. Niet enkel een formulier.",
-    "lede": "De meeste configurators kunnen één ding goed. Guided selling, óf configuratie, óf visualisatie. Wij geloven dat een configurator pas écht waarde levert als die drie samenkomen, en als hij, volledig geïntegreerd, praat met de systemen waar de rest van je bedrijf op draait.",
+    "lede": "De meeste configuratoren kunnen één ding goed. Guided selling, óf configuratie, óf visualisatie. Wij geloven dat een configurator pas écht waarde levert als die drie samenkomen, en als hij, volledig geïntegreerd, praat met de systemen waar de rest van je bedrijf op draait.",
     "blocks": [
       {
         "num": "01",

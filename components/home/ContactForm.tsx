@@ -54,21 +54,21 @@ export function ContactForm() {
         <Field name="lastName" label="Achternaam" required />
         <Field name="company" label="Bedrijf" />
         <Field name="email" label="E-mailadres" type="email" required />
-        <Field name="phone" label="Telefoonnummer" type="tel" />
+        <Field name="phone" label="Telefoonnummer (optioneel)" type="tel" />
         <Textarea name="message" label="Daag ons uit" />
       </div>
 
       <p className="mt-6 text-[12px] leading-[1.55] text-hb-sec">
-        Door op verzenden te klikken geef je toestemming aan Happy Horizon om de hierboven
-        ingediende persoonlijke informatie op te slaan en te verwerken om je van de
-        gevraagde inhoud te voorzien.
+        We gebruiken je gegevens alleen om contact op te nemen. Geen nieuwsbrief.
+        Lees ons{' '}
+        <a
+          href="https://happyhorizon.com/nl/privacy"
+          className="underline decoration-2 underline-offset-2 hover:text-hb"
+        >
+          privacybeleid
+        </a>
+        .
       </p>
-
-      {/* reCAPTCHA placeholder — replace with real widget for production */}
-      <div className="mt-5 flex h-[78px] w-fit items-center gap-3 rounded-md border border-hg-line bg-hg px-4 font-mono text-[11px] text-hb-sec">
-        <span className="h-5 w-5 rounded-sm border border-hg-line bg-white" aria-hidden />
-        reCAPTCHA (TODO: koppel met echte key voor go-live)
-      </div>
 
       {error && (
         <p className="mt-4 text-[13px] font-bold text-hs1">{error}</p>
@@ -79,7 +79,7 @@ export function ContactForm() {
         disabled={status === 'pending'}
         className="mt-6 inline-flex items-center gap-2 rounded-full bg-hb px-6 py-3.5 text-[14px] font-bold text-white transition-colors hover:bg-hb-soft disabled:opacity-60"
       >
-        {status === 'pending' ? 'Verzenden…' : 'Verzenden →'}
+        {status === 'pending' ? 'Verzenden…' : 'Daag ons uit →'}
       </button>
     </form>
   );

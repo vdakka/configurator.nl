@@ -33,11 +33,11 @@ export function HeroSection({ hero }: { hero: HomepageContent['hero'] }) {
             {hero.sub}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="/contact" variant="primary">
+          <div className="mt-8 flex flex-wrap items-center gap-5">
+            <Button href="/quickscan?start=1" variant="primary">
               {hero.primaryCta} <span aria-hidden>→</span>
             </Button>
-            <Button href="/quickscan?start=1" variant="ghost">
+            <Button href="/contact" variant="ghost">
               {hero.secondaryCta} <span aria-hidden>→</span>
             </Button>
           </div>
