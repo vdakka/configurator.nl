@@ -18,7 +18,7 @@ export function ContactCTABlock({
 }) {
   return (
     <section className="relative overflow-hidden bg-white py-16 text-hb sm:py-20">
-      <SectionId num="07" label="contact" />
+      <SectionId num="08" label="contact" />
       <div
         aria-hidden
         className="pointer-events-none absolute -left-24 top-[18%] animate-float1-slow opacity-60"

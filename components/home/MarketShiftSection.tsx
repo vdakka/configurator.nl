@@ -9,7 +9,7 @@ export function MarketShiftSection({
   data: HomepageContent['marketShift'];
 }) {
   return (
-    <section className="relative overflow-hidden bg-white py-24 sm:py-32">
+    <section className="relative overflow-hidden bg-hg py-24 sm:py-32">
       <SectionId num="03" label="wat" />
       <div className="pointer-events-none absolute inset-0 dot-grid-dark opacity-50" aria-hidden />
 

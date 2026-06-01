@@ -47,7 +47,7 @@ export function DiscoveryFramework({
       ref={ref}
       className="relative overflow-hidden bg-hb py-24 text-white sm:py-28"
     >
-      <SectionId num="05" label="aanpak" tone="light" />
+      <SectionId num="06" label="aanpak" tone="light" />
       <div className="absolute inset-0 grid-lines opacity-40" aria-hidden />
       <div
         aria-hidden
