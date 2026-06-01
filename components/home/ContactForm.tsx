@@ -8,6 +8,7 @@ type Status = 'idle' | 'pending' | 'success' | 'error';
 /**
  * Contactformulier. A11y- en agent-vriendelijk:
  * - Expliciete `<label htmlFor>` ↔ `<input id>` koppelingen
+ * - Zichtbare labels boven elk veld (mono-label stijl) i.p.v. placeholder-only
  * - autoComplete per veld (browser autofill + agent-context)
  * - Custom mcp-* attributes voor de experimentele WebMCP-standaard
  *   (Chrome agentic browsing; HTML5-legaal en wordt door andere
@@ -64,7 +65,7 @@ export function ContactForm() {
           'Stuur een configurator-vraagstuk in; Happy Horizon neemt deze week persoonlijk contact op.',
       }}
     >
-      <div className="space-y-4">
+      <div className="space-y-5">
         <Field
           id="contact-first-name"
           name="firstName"
@@ -96,11 +97,16 @@ export function ContactForm() {
         <Field
           id="contact-phone"
           name="phone"
-          label="Telefoonnummer (optioneel)"
+          label="Telefoonnummer"
           type="tel"
           autoComplete="tel"
         />
-        <Textarea id="contact-message" name="message" label="Daag ons uit" />
+        <Textarea
+          id="contact-message"
+          name="message"
+          label="Daag ons uit"
+          placeholder="Vertel kort wat de uitdaging is, dan kan Gerke gericht meedenken."
+        />
       </div>
 
       <p className="mt-6 text-[12px] leading-[1.55] text-hb-sec">
@@ -147,16 +153,19 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="sr-only">
+      <label
+        htmlFor={id}
+        className="mono-label mb-2 block text-[10px] text-hb-sec"
+      >
         {label}
-        {required ? ' (verplicht)' : ''}
+        {required && <span className="ml-1 text-hs1" aria-hidden>*</span>}
+        {required && <span className="sr-only"> (verplicht)</span>}
       </label>
       <input
         id={id}
         type={type}
         name={name}
         required={required}
-        placeholder={required ? `${label}*` : label}
         autoComplete={autoComplete}
         className="block w-full rounded-xl border border-hg-line bg-white px-4 py-3.5 text-[14px] text-hb placeholder:text-hb-sec/70 focus:border-hb focus:outline-none"
         {...(required ? { 'mcp-required': '' } : {})}
@@ -169,21 +178,26 @@ function Textarea({
   id,
   name,
   label,
+  placeholder,
 }: {
   id: string;
   name: string;
   label: string;
+  placeholder?: string;
 }) {
   return (
     <div>
-      <label htmlFor={id} className="sr-only">
+      <label
+        htmlFor={id}
+        className="mono-label mb-2 block text-[10px] text-hb-sec"
+      >
         {label}
       </label>
       <textarea
         id={id}
         name={name}
         rows={5}
-        placeholder={label}
+        placeholder={placeholder}
         className="block w-full resize-none rounded-xl border border-hg-line bg-white px-4 py-3.5 text-[14px] text-hb placeholder:text-hb-sec/70 focus:border-hb focus:outline-none"
       />
     </div>
