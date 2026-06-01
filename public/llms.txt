@@ -1,0 +1,26 @@
+# configurator.nl
+
+> Specialisme-site van Happy Horizon. Wij ontwerpen en bouwen
+> productconfiguratoren: van Discovery tot integratie in het IT- en
+> systeemlandschap. Guided selling, configuratie en visualisatie in één,
+> gekoppeld aan ERP/PIM. Technologie-onafhankelijk.
+
+## Propositie
+- Guided selling: de juiste vragen in de juiste volgorde naar het beste product.
+- Configuratie: regels, varianten, afhankelijkheden en prijzen, realtime gevalideerd naar productiegegevens.
+- Visualisatie: het samengestelde product zichtbaar op het scherm.
+
+## Aanpak (vier stappen)
+- Strategie: doelen, doelgroepen, KPI's, value case.
+- Mensen: jobs-to-be-done, user flows, service blueprint.
+- Proces: data model, regelmotor, ERP/PIM-koppelingen.
+- Technologie: build vs buy, API-first, TCO.
+
+## Pagina's
+- Home: https://configurator.nl/
+- Aanpak: https://configurator.nl/aanpak
+- Quickscan: https://configurator.nl/quickscan
+- Contact: https://configurator.nl/contact
+
+## Contact
+Gerke van den Akker, SME Configuratoren, Happy Horizon.
