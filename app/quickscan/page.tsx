@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { getStatements, getQuickscanMicrocopy, getGerke } from '@/lib/content';
 import { QuizSchema } from '@/lib/schema-org';
+import { WebMCPRegistration } from '@/components/quickscan/WebMCPRegistration';
 
 const QuickscanApp = dynamic(
   () => import('@/components/quickscan/QuickscanApp').then((m) => m.QuickscanApp),
@@ -29,6 +30,7 @@ export default function QuickscanPage({
   return (
     <>
       <QuizSchema />
+      <WebMCPRegistration statements={statements} />
       <QuickscanApp
         statements={statements}
         microcopy={microcopy}
