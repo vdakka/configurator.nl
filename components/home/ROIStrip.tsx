@@ -4,7 +4,7 @@ import type { StatsConfig } from '@/lib/content';
 export function ROIStrip({ stats }: { stats: StatsConfig }) {
   return (
     <section className="relative bg-hg py-20 text-hb sm:py-24">
-      <SectionId num="04" label="kpi" />
+      <SectionId num="05" label="kpi" />
       <div className="mx-auto max-w-page px-6 sm:px-8">
         <div className="grid items-end gap-10 border-b border-hg-line pb-10 md:grid-cols-[1fr_auto]">
           <h2 className="max-w-[760px] text-[28px] font-black leading-[1.06] tracking-display sm:text-[36px] md:text-[42px]">

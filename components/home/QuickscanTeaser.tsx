@@ -12,7 +12,7 @@ export function QuickscanTeaser({
 }) {
   return (
     <section className="relative overflow-hidden bg-hy py-24 text-hb sm:py-32">
-      <SectionId num="06" label="quickscan" />
+      <SectionId num="07" label="quickscan" />
       {/* Faint blue background circles */}
       <span
         aria-hidden
