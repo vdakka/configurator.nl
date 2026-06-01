@@ -1,7 +1,13 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, type PanInfo } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  animate,
+  type PanInfo,
+} from 'framer-motion';
+import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 import type { Statement } from '@/lib/content';
 import type { Answer } from '@/lib/quickscan-logic';
 
@@ -18,21 +24,31 @@ type Props = {
   statementLabel: string;
 };
 
+export type SwipeCardHandle = {
+  /** Animate the card off-screen in the given direction, then commit the answer. */
+  swipeOut: (direction: Answer) => void;
+};
+
 const SWIPE_THRESHOLD = 100;
 const STAMP_FADE_DISTANCE = 80;
+const EXIT_DISTANCE = 600;
+const EXIT_DURATION = 0.35;
 
-export function SwipeCard({
-  statement,
-  index,
-  total,
-  onCommit,
-  depth,
-  stampYes,
-  stampNo,
-  hintNo,
-  hintYes,
-  statementLabel,
-}: Props) {
+export const SwipeCard = forwardRef<SwipeCardHandle, Props>(function SwipeCard(
+  {
+    statement,
+    index,
+    total,
+    onCommit,
+    depth,
+    stampYes,
+    stampNo,
+    hintNo,
+    hintYes,
+    statementLabel,
+  },
+  ref,
+) {
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-300, 0, 300], [-18, 0, 18]);
   const yesOpacity = useTransform(x, [0, STAMP_FADE_DISTANCE], [0, 1]);
@@ -49,9 +65,32 @@ export function SwipeCard({
     if (Math.abs(info.offset.x) > SWIPE_THRESHOLD) {
       committedRef.current = true;
       const direction: Answer = info.offset.x > 0 ? 'yes' : 'no';
-      onCommit(direction);
+      // Slide the card off-screen first, then commit so the next card slides in.
+      const target = direction === 'yes' ? EXIT_DISTANCE : -EXIT_DISTANCE;
+      animate(x, target, {
+        duration: EXIT_DURATION,
+        ease: 'easeOut',
+        onComplete: () => onCommit(direction),
+      });
     }
   };
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      swipeOut(direction: Answer) {
+        if (committedRef.current || !isFront) return;
+        committedRef.current = true;
+        const target = direction === 'yes' ? EXIT_DISTANCE : -EXIT_DISTANCE;
+        animate(x, target, {
+          duration: EXIT_DURATION,
+          ease: 'easeOut',
+          onComplete: () => onCommit(direction),
+        });
+      },
+    }),
+    [isFront, onCommit, x],
+  );
 
   // Reset committed flag when statement changes
   useEffect(() => {
@@ -119,4 +158,4 @@ export function SwipeCard({
       </div>
     </motion.div>
   );
-}
+});

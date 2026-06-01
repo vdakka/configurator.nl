@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     'B2B-fabrikanten of B2C-retailers: configuratoren werken in beide. Kies je segment voor specifieke voorbeelden, integraties en aanpak.',
   alternates: { canonical: '/branches' },
+  robots: { index: false, follow: false },
 };
 
 const SEGMENTS = [

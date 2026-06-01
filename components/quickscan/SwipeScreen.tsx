@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { SwipeCard } from './SwipeCard';
+import { SwipeCard, type SwipeCardHandle } from './SwipeCard';
 import { ProgressBar } from './ProgressBar';
 import { RoundActionButton } from './RoundActionButton';
 import type { Statement } from '@/lib/content';
@@ -34,16 +34,24 @@ export function SwipeScreen({
   onCommit: (answer: Answer) => void;
   onPrev: () => void;
 }) {
-  // Keyboard shortcuts
+  // Ref to the front card so button-clicks/keys can trigger the swipe-out
+  // animation through the same path as a drag.
+  const cardRef = useRef<SwipeCardHandle | null>(null);
+
+  const triggerSwipe = useCallback((direction: Answer) => {
+    cardRef.current?.swipeOut(direction);
+  }, []);
+
+  // Keyboard shortcuts — route through the swipe animation, not direct commit.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
       if (e.key === 'ArrowRight') {
         e.preventDefault();
-        onCommit('yes');
+        triggerSwipe('yes');
       } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        onCommit('no');
+        triggerSwipe('no');
       } else if (e.key === 'ArrowUp' && index > 0) {
         e.preventDefault();
         onPrev();
@@ -51,7 +59,7 @@ export function SwipeScreen({
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [index, onCommit, onPrev]);
+  }, [index, triggerSwipe, onPrev]);
 
   const current = questions[index];
   const next = questions[index + 1];
@@ -96,6 +104,7 @@ export function SwipeScreen({
             />
           )}
           <SwipeCard
+            ref={cardRef}
             key={`${current.id}-front`}
             statement={current}
             index={index}
@@ -108,8 +117,16 @@ export function SwipeScreen({
       </div>
 
       <div className="mt-8 flex items-center gap-7">
-        <RoundActionButton variant="no" label={copy.buttonNo} onClick={() => onCommit('no')} />
-        <RoundActionButton variant="yes" label={copy.buttonYes} onClick={() => onCommit('yes')} />
+        <RoundActionButton
+          variant="no"
+          label={copy.buttonNo}
+          onClick={() => triggerSwipe('no')}
+        />
+        <RoundActionButton
+          variant="yes"
+          label={copy.buttonYes}
+          onClick={() => triggerSwipe('yes')}
+        />
       </div>
 
       <p className="mt-8 font-mono text-[11px] text-hb-sec/70">{copy.keyboardHint}</p>

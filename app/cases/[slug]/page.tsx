@@ -16,6 +16,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     title: data.meta.title,
     description: data.meta.summary,
     alternates: { canonical: `/cases/${params.slug}` },
+    robots: { index: false, follow: false },
   };
 }
 

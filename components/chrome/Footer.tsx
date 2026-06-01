@@ -4,9 +4,7 @@ import { HappyHorizonLogo } from './HappyHorizonLogo';
 const SITE_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/aanpak', label: 'Aanpak' },
-  { href: '/cases', label: 'Cases' },
-  { href: '/branches/b2b', label: 'B2B' },
-  { href: '/branches/b2c', label: 'B2C' },
+  { href: '/quickscan', label: 'Quickscan' },
   { href: '/contact', label: 'Contact' },
 ];
 

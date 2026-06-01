@@ -133,7 +133,9 @@ export function ResultScreen({
         {bucket !== 'nognniet' && (
           <div className="mt-6 flex items-center justify-between border-t border-hg-line pt-5 text-[12px] text-hb-sec">
             <Link
-              href={gerke.linkedin}
+              href="https://www.linkedin.com/company/happy-horizon"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-bold text-hb hover:text-hb-soft"
             >
               {copy.follow ?? 'Volg ons'}

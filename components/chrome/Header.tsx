@@ -4,8 +4,6 @@ import { HappyHorizonLogo } from './HappyHorizonLogo';
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/aanpak', label: 'Aanpak' },
-  { href: '/cases', label: 'Cases' },
-  { href: '/branches', label: 'Branches' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 
