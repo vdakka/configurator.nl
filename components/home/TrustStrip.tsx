@@ -63,6 +63,19 @@ export function TrustStrip({ trust }: { trust: HomepageContent['trustStrip'] }) 
           ))}
         </ul>
       </div>
+
+      {trust.quote && (
+        <div className="mx-auto mt-12 max-w-page px-6 sm:px-8">
+          <figure className="mx-auto max-w-[820px] border-l-2 border-hy pl-6">
+            <blockquote className="text-[19px] font-semibold leading-[1.45] text-hb md:text-[22px]">
+              &ldquo;{trust.quote.text}&rdquo;
+            </blockquote>
+            <figcaption className="mt-4 font-mono text-[11px] uppercase tracking-eyebrow text-hb-sec">
+              {trust.quote.name} · {trust.quote.role} · {trust.quote.company}
+            </figcaption>
+          </figure>
+        </div>
+      )}
     </section>
   );
 }

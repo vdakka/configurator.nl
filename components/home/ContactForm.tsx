@@ -79,7 +79,7 @@ export function ContactForm() {
         disabled={status === 'pending'}
         className="mt-6 inline-flex items-center gap-2 rounded-full bg-hb px-6 py-3.5 text-[14px] font-bold text-white transition-colors hover:bg-hb-soft disabled:opacity-60"
       >
-        {status === 'pending' ? 'Verzenden…' : 'Daag ons uit →'}
+        {status === 'pending' ? 'Verzenden…' : 'Bespreek je configuratorvraagstuk →'}
       </button>
     </form>
   );

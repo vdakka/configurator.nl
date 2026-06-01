@@ -23,6 +23,7 @@ export type HomepageContent = {
   trustStrip: {
     label: string;
     logos: Array<{ slug: string; name: string; ext: 'svg' | 'png' }>;
+    quote?: { text: string; name: string; role: string; company: string };
   };
   marketShift: {
     eyebrow: string;
@@ -57,6 +58,14 @@ export type HomepageContent = {
     phases: Array<{ num: string; title: string; body: string }>;
     cta: string;
     tip: string;
+  };
+  faq: {
+    eyebrow: string;
+    title: string;
+    lede: string;
+    linkLabel: string;
+    linkHref: string;
+    items: FAQItem[];
   };
   contactCta: {
     eyebrow: string;

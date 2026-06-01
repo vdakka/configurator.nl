@@ -11,11 +11,11 @@
       "B2B + B2C"
     ],
     "headline": {
-      "pre": "Configuratoren die",
-      "highlight": "werken voor",
-      "post": "jouw business."
+      "pre": "Productconfiguratoren voor bedrijven met",
+      "highlight": "complexe producten,",
+      "post": "regels en integraties."
     },
-    "sub": "Een productconfigurator is je digitale adviseur. Klanten stellen hun product samen, jouw systeem valideert direct naar prijs, beschikbaarheid en productie. Wij ontwerpen en bouwen ze, van Discovery tot integratie in je IT- of systeemlandschap.",
+    "sub": "Je klant stelt zijn product samen, jouw systeem valideert direct naar prijs, beschikbaarheid en productie. Wij ontwerpen en bouwen ze, technologie-onafhankelijk, van Discovery tot integratie in je IT- en systeemlandschap.",
     "primaryCta": "Doe de quickscan",
     "secondaryCta": "Plan een vrijblijvend gesprek"
   },
@@ -32,7 +32,13 @@
       { "slug": "solarnrg", "name": "SolarNRG", "ext": "png" },
       { "slug": "trendhopper", "name": "Trendhopper", "ext": "png" },
       { "slug": "vogels", "name": "Vogel's", "ext": "png" }
-    ]
+    ],
+    "quote": {
+      "text": "Als consument wil je het product zien dat je krijgt. Met een configurator maken we dat waar.",
+      "name": "Thomas van Kessel",
+      "role": "Business Development",
+      "company": "Fetim Group"
+    }
   },
   "marketShift": {
     "eyebrow": "Definitie",
@@ -59,7 +65,7 @@
   "quickscanTeaser": {
     "eyebrow": "Quickscan · swipegame",
     "title": "Past een configurator bij jouw bedrijf?",
-    "lede": "Doe de Quickscan. Tien stellingen, swipe wat klopt, en je weet direct of een configurator jullie verkoopproces gaat helpen.",
+    "lede": "10 stellingen, 2 minuten. Je ziet direct of een configurator bij jouw verkoopproces past, en op welk niveau (eenvoudig, CPQ, 3D of maatwerk). Wil je doorpraten? Dan kijkt Gerke met je mee.",
     "meta": [
       { "value": "10", "label": "stellingen" },
       { "value": "2", "label": "minuten" },
@@ -127,6 +133,48 @@
     ],
     "cta": "Lees meer over onze aanpak",
     "tip": "Hover of klik op een stap om de inhoud te zien. We doorlopen ze in deze volgorde voor we adviseren."
+  },
+  "faq": {
+    "eyebrow": "Vragen vooraf",
+    "title": "Wat klanten ons doorgaans vragen.",
+    "lede": "Korte antwoorden op de meest gestelde vragen. Mis je iets?",
+    "linkLabel": "Stel je vraag in een gesprek.",
+    "linkHref": "/contact",
+    "items": [
+      {
+        "q": "Wat kost een configurator?",
+        "a": "Dat hangt af van complexiteit, aantal varianten en de benodigde integraties. We starten met een Discovery waarin we scope, regels en koppelingen bepalen. Daarna geven we een onderbouwde investeringsindicatie.",
+        "open": true
+      },
+      {
+        "q": "Hoe lang duurt de implementatie?",
+        "a": "Afhankelijk van scope en integratiediepte. Een eerste werkende versie is vaak sneller live dan verwacht; complexe ERP- of PIM-koppelingen vragen meer tijd. In de Discovery geven we een realistische planning."
+      },
+      {
+        "q": "Koppelt de configurator met ons ERP, PIM of webshop?",
+        "a": "Ja. Integratie is het uitgangspunt, niet een sluitstuk. We werken API-first en koppelen met je bestaande commerce-, PIM- en ERP-omgeving zodat keuzes direct doorwerken naar prijs, beschikbaarheid en productie."
+      },
+      {
+        "q": "Bouwen jullie zelf of gebruiken jullie bestaande software?",
+        "a": "Allebei, afhankelijk van wat past. We zijn technologie-onafhankelijk en kiezen per situatie: een bestaand platform, maatwerk of een combinatie. Je zit niet vast aan één leverancier of aan onze code."
+      },
+      {
+        "q": "Wat als we nog niet weten of een configurator iets voor ons is?",
+        "a": "Doe de quickscan (2 minuten) of plan een gesprek. We beginnen altijd bij je doelen en proces, niet bij de techniek. Soms is het advies: nog geen configurator."
+      },
+      {
+        "q": "Voor welke producten werkt een configurator?",
+        "a": "Vooral voor producten met varianten, regels en afhankelijkheden: samenstelbare, configureerbare of op maat geproduceerde producten in B2B en B2C."
+      },
+      {
+        "q": "Wat levert het op?",
+        "a": "Sneller van offerte naar order, minder orderfouten door realtime validatie, en hogere conversie doordat de klant ziet wat hij koopt. De exacte winst hangt af van je uitgangssituatie."
+      },
+      {
+        "q": "Wie binnen ons bedrijf hebben jullie nodig?",
+        "a": "Doorgaans iemand van commercie, iemand van IT of architectuur en iemand met productkennis. We brengen dat in de Discovery in kaart."
+      }
+    ]
   },
   "contactCta": {
     "eyebrow": "Daag ons uit",
