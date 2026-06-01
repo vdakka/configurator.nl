@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'B2C configuratoren',
   description: 'Configuratoren voor B2C-retailers: visualisatie, personalisatie, naadloze checkout.',
   alternates: { canonical: '/branches/b2c' },
-  robots: { index: false, follow: true },
+  robots: { index: false, follow: false },
 };
 
 export default function B2CPage() {

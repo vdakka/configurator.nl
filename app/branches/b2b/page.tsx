@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'B2B configuratoren',
   description: 'Configuratoren voor B2B-fabrikanten: guided selling, dealer-portals, ERP-koppelingen.',
   alternates: { canonical: '/branches/b2b' },
-  robots: { index: false, follow: true },
+  robots: { index: false, follow: false },
 };
 
 export default function B2BPage() {

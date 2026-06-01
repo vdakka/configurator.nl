@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     'Verschillende branches, verschillende systeemlandschappen. Eén gemene deler: guided selling, configuratie en visualisatie die in elkaar grijpen.',
   alternates: { canonical: '/cases' },
+  robots: { index: false, follow: false },
 };
 
 export default function CasesPage() {

@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { SwipeCard } from './SwipeCard';
+import { SwipeCard, type ExitSignal } from './SwipeCard';
 import { ProgressBar } from './ProgressBar';
 import { RoundActionButton } from './RoundActionButton';
 import type { Statement } from '@/lib/content';
@@ -34,16 +34,34 @@ export function SwipeScreen({
   onCommit: (answer: Answer) => void;
   onPrev: () => void;
 }) {
-  // Keyboard shortcuts
+  // Button/keyboard triggers a swipe-out animation by bumping `exitSignal.nonce`.
+  // The front card watches the signal and runs the same animate() that drag-end
+  // uses, then calls onCommit when the animation completes.
+  const [exitSignal, setExitSignal] = useState<ExitSignal | null>(null);
+
+  const triggerSwipe = useCallback((direction: Answer) => {
+    setExitSignal({ direction, nonce: Date.now() });
+  }, []);
+
+  // After commit, clear exitSignal so the next card doesn't see a stale signal.
+  const handleCommit = useCallback(
+    (answer: Answer) => {
+      setExitSignal(null);
+      onCommit(answer);
+    },
+    [onCommit],
+  );
+
+  // Keyboard shortcuts go through the same animation path.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
       if (e.key === 'ArrowRight') {
         e.preventDefault();
-        onCommit('yes');
+        triggerSwipe('yes');
       } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        onCommit('no');
+        triggerSwipe('no');
       } else if (e.key === 'ArrowUp' && index > 0) {
         e.preventDefault();
         onPrev();
@@ -51,7 +69,7 @@ export function SwipeScreen({
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [index, onCommit, onPrev]);
+  }, [index, triggerSwipe, onPrev]);
 
   const current = questions[index];
   const next = questions[index + 1];
@@ -100,16 +118,25 @@ export function SwipeScreen({
             statement={current}
             index={index}
             total={questions.length}
-            onCommit={onCommit}
+            onCommit={handleCommit}
             depth={0}
+            exitSignal={exitSignal}
             {...copy}
           />
         </AnimatePresence>
       </div>
 
       <div className="mt-8 flex items-center gap-7">
-        <RoundActionButton variant="no" label={copy.buttonNo} onClick={() => onCommit('no')} />
-        <RoundActionButton variant="yes" label={copy.buttonYes} onClick={() => onCommit('yes')} />
+        <RoundActionButton
+          variant="no"
+          label={copy.buttonNo}
+          onClick={() => triggerSwipe('no')}
+        />
+        <RoundActionButton
+          variant="yes"
+          label={copy.buttonYes}
+          onClick={() => triggerSwipe('yes')}
+        />
       </div>
 
       <p className="mt-8 font-mono text-[11px] text-hb-sec/70">{copy.keyboardHint}</p>
