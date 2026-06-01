@@ -1,8 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { SwipeCard, type SwipeCardHandle } from './SwipeCard';
+import { SwipeCard, type ExitSignal } from './SwipeCard';
 import { ProgressBar } from './ProgressBar';
 import { RoundActionButton } from './RoundActionButton';
 import type { Statement } from '@/lib/content';
@@ -34,15 +34,25 @@ export function SwipeScreen({
   onCommit: (answer: Answer) => void;
   onPrev: () => void;
 }) {
-  // Ref to the front card so button-clicks/keys can trigger the swipe-out
-  // animation through the same path as a drag.
-  const cardRef = useRef<SwipeCardHandle | null>(null);
+  // Button/keyboard triggers a swipe-out animation by bumping `exitSignal.nonce`.
+  // The front card watches the signal and runs the same animate() that drag-end
+  // uses, then calls onCommit when the animation completes.
+  const [exitSignal, setExitSignal] = useState<ExitSignal | null>(null);
 
   const triggerSwipe = useCallback((direction: Answer) => {
-    cardRef.current?.swipeOut(direction);
+    setExitSignal({ direction, nonce: Date.now() });
   }, []);
 
-  // Keyboard shortcuts — route through the swipe animation, not direct commit.
+  // After commit, clear exitSignal so the next card doesn't see a stale signal.
+  const handleCommit = useCallback(
+    (answer: Answer) => {
+      setExitSignal(null);
+      onCommit(answer);
+    },
+    [onCommit],
+  );
+
+  // Keyboard shortcuts go through the same animation path.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
@@ -104,13 +114,13 @@ export function SwipeScreen({
             />
           )}
           <SwipeCard
-            ref={cardRef}
             key={`${current.id}-front`}
             statement={current}
             index={index}
             total={questions.length}
-            onCommit={onCommit}
+            onCommit={handleCommit}
             depth={0}
+            exitSignal={exitSignal}
             {...copy}
           />
         </AnimatePresence>

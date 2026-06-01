@@ -7,9 +7,11 @@ import {
   animate,
   type PanInfo,
 } from 'framer-motion';
-import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import type { Statement } from '@/lib/content';
 import type { Answer } from '@/lib/quickscan-logic';
+
+export type ExitSignal = { direction: Answer; nonce: number };
 
 type Props = {
   statement: Statement;
@@ -22,11 +24,10 @@ type Props = {
   hintNo: string;
   hintYes: string;
   statementLabel: string;
-};
-
-export type SwipeCardHandle = {
-  /** Animate the card off-screen in the given direction, then commit the answer. */
-  swipeOut: (direction: Answer) => void;
+  /** When the parent wants to swipe this card out programmatically (button click,
+   * keyboard arrow), it bumps `exitSignal.nonce`. The card animates and then
+   * calls `onCommit`. Only honored by the front card (depth 0). */
+  exitSignal?: ExitSignal | null;
 };
 
 const SWIPE_THRESHOLD = 100;
@@ -34,21 +35,19 @@ const STAMP_FADE_DISTANCE = 80;
 const EXIT_DISTANCE = 600;
 const EXIT_DURATION = 0.35;
 
-export const SwipeCard = forwardRef<SwipeCardHandle, Props>(function SwipeCard(
-  {
-    statement,
-    index,
-    total,
-    onCommit,
-    depth,
-    stampYes,
-    stampNo,
-    hintNo,
-    hintYes,
-    statementLabel,
-  },
-  ref,
-) {
+export function SwipeCard({
+  statement,
+  index,
+  total,
+  onCommit,
+  depth,
+  stampYes,
+  stampNo,
+  hintNo,
+  hintYes,
+  statementLabel,
+  exitSignal,
+}: Props) {
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-300, 0, 300], [-18, 0, 18]);
   const yesOpacity = useTransform(x, [0, STAMP_FADE_DISTANCE], [0, 1]);
@@ -57,42 +56,41 @@ export const SwipeCard = forwardRef<SwipeCardHandle, Props>(function SwipeCard(
 
   const isFront = depth === 0;
 
+  function commitWithAnimation(direction: Answer) {
+    if (committedRef.current) return;
+    committedRef.current = true;
+    const target = direction === 'yes' ? EXIT_DISTANCE : -EXIT_DISTANCE;
+    animate(x, target, {
+      duration: EXIT_DURATION,
+      ease: 'easeOut',
+      onComplete: () => onCommit(direction),
+    });
+  }
+
   const handleDragEnd = (
     _: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo,
   ) => {
     if (committedRef.current) return;
     if (Math.abs(info.offset.x) > SWIPE_THRESHOLD) {
-      committedRef.current = true;
-      const direction: Answer = info.offset.x > 0 ? 'yes' : 'no';
-      // Slide the card off-screen first, then commit so the next card slides in.
-      const target = direction === 'yes' ? EXIT_DISTANCE : -EXIT_DISTANCE;
-      animate(x, target, {
-        duration: EXIT_DURATION,
-        ease: 'easeOut',
-        onComplete: () => onCommit(direction),
-      });
+      commitWithAnimation(info.offset.x > 0 ? 'yes' : 'no');
     }
   };
 
-  useImperativeHandle(
-    ref,
-    () => ({
-      swipeOut(direction: Answer) {
-        if (committedRef.current || !isFront) return;
-        committedRef.current = true;
-        const target = direction === 'yes' ? EXIT_DISTANCE : -EXIT_DISTANCE;
-        animate(x, target, {
-          duration: EXIT_DURATION,
-          ease: 'easeOut',
-          onComplete: () => onCommit(direction),
-        });
-      },
-    }),
-    [isFront, onCommit, x],
-  );
+  // Watch exitSignal — parent bumps nonce when a button/key triggers a swipe.
+  // We use a ref to remember the last handled nonce so the effect only fires
+  // when a *new* signal arrives (not on initial mount with a leftover signal).
+  const lastNonceRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!exitSignal || !isFront) return;
+    if (lastNonceRef.current === exitSignal.nonce) return;
+    lastNonceRef.current = exitSignal.nonce;
+    commitWithAnimation(exitSignal.direction);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [exitSignal?.nonce, isFront]);
 
-  // Reset committed flag when statement changes
+  // Reset committed flag when statement changes (extra safety; in practice the
+  // component unmounts/remounts on statement change via the key prop).
   useEffect(() => {
     committedRef.current = false;
     x.set(0);
@@ -158,4 +156,4 @@ export const SwipeCard = forwardRef<SwipeCardHandle, Props>(function SwipeCard(
       </div>
     </motion.div>
   );
-});
+}
