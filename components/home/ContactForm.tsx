@@ -5,6 +5,14 @@ import { track } from '@/lib/analytics';
 
 type Status = 'idle' | 'pending' | 'success' | 'error';
 
+/**
+ * Contactformulier. A11y- en agent-vriendelijk:
+ * - Expliciete `<label htmlFor>` ↔ `<input id>` koppelingen
+ * - autoComplete per veld (browser autofill + agent-context)
+ * - Custom mcp-* attributes voor de experimentele WebMCP-standaard
+ *   (Chrome agentic browsing; HTML5-legaal en wordt door andere
+ *   browsers genegeerd).
+ */
 export function ContactForm() {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);
@@ -48,14 +56,51 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       className="rounded-2xl bg-white p-8 text-hb shadow-[0_30px_80px_-20px_rgba(7,7,51,0.4)] sm:p-10"
+      // WebMCP declaratief (experimenteel) — Chrome agents kunnen dit
+      // formulier ontdekken als de tool "contact_uitdaging".
+      {...{
+        'mcp-tool': 'contact_uitdaging',
+        'mcp-description':
+          'Stuur een configurator-vraagstuk in; Happy Horizon neemt deze week persoonlijk contact op.',
+      }}
     >
       <div className="space-y-4">
-        <Field name="firstName" label="Voornaam" required />
-        <Field name="lastName" label="Achternaam" required />
-        <Field name="company" label="Bedrijf" />
-        <Field name="email" label="E-mailadres" type="email" required />
-        <Field name="phone" label="Telefoonnummer (optioneel)" type="tel" />
-        <Textarea name="message" label="Daag ons uit" />
+        <Field
+          id="contact-first-name"
+          name="firstName"
+          label="Voornaam"
+          autoComplete="given-name"
+          required
+        />
+        <Field
+          id="contact-last-name"
+          name="lastName"
+          label="Achternaam"
+          autoComplete="family-name"
+          required
+        />
+        <Field
+          id="contact-company"
+          name="company"
+          label="Bedrijf"
+          autoComplete="organization"
+        />
+        <Field
+          id="contact-email"
+          name="email"
+          label="E-mailadres"
+          type="email"
+          autoComplete="email"
+          required
+        />
+        <Field
+          id="contact-phone"
+          name="phone"
+          label="Telefoonnummer (optioneel)"
+          type="tel"
+          autoComplete="tel"
+        />
+        <Textarea id="contact-message" name="message" label="Daag ons uit" />
       </div>
 
       <p className="mt-6 text-[12px] leading-[1.55] text-hb-sec">
@@ -86,43 +131,61 @@ export function ContactForm() {
 }
 
 function Field({
+  id,
   name,
   label,
   type = 'text',
   required,
+  autoComplete,
 }: {
+  id: string;
   name: string;
   label: string;
   type?: string;
   required?: boolean;
+  autoComplete?: string;
 }) {
   return (
-    <label className="block">
-      <span className="sr-only">
+    <div>
+      <label htmlFor={id} className="sr-only">
         {label}
         {required ? ' (verplicht)' : ''}
-      </span>
+      </label>
       <input
+        id={id}
         type={type}
         name={name}
         required={required}
         placeholder={required ? `${label}*` : label}
+        autoComplete={autoComplete}
         className="block w-full rounded-xl border border-hg-line bg-white px-4 py-3.5 text-[14px] text-hb placeholder:text-hb-sec/70 focus:border-hb focus:outline-none"
+        {...(required ? { 'mcp-required': '' } : {})}
       />
-    </label>
+    </div>
   );
 }
 
-function Textarea({ name, label }: { name: string; label: string }) {
+function Textarea({
+  id,
+  name,
+  label,
+}: {
+  id: string;
+  name: string;
+  label: string;
+}) {
   return (
-    <label className="block">
-      <span className="sr-only">{label}</span>
+    <div>
+      <label htmlFor={id} className="sr-only">
+        {label}
+      </label>
       <textarea
+        id={id}
         name={name}
         rows={5}
         placeholder={label}
         className="block w-full resize-none rounded-xl border border-hg-line bg-white px-4 py-3.5 text-[14px] text-hb placeholder:text-hb-sec/70 focus:border-hb focus:outline-none"
       />
-    </label>
+    </div>
   );
 }
