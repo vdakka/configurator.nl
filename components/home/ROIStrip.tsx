@@ -11,7 +11,7 @@ export function ROIStrip({ stats }: { stats: StatsConfig }) {
             Wat een goed geïntegreerde configurator oplevert.
           </h2>
           <p className="font-mono text-[11px] uppercase tracking-eyebrow text-hb-sec">
-            Cijfers uit de praktijk
+            Externe benchmark · Forrester / Gartner / Salesforce
             <SourceFootnote sources={stats.sources} />
           </p>
         </div>

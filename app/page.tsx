@@ -7,8 +7,9 @@ import { MarketShiftSection } from '@/components/home/MarketShiftSection';
 import { TechStackSection } from '@/components/home/TechStackSection';
 import { QuickscanTeaser } from '@/components/home/QuickscanTeaser';
 import { DiscoveryFramework } from '@/components/home/DiscoveryFramework';
+import { FAQ } from '@/components/home/FAQ';
 import { ContactCTABlock } from '@/components/home/ContactCTABlock';
-import { ServiceSchema } from '@/lib/schema-org';
+import { ServiceSchema, FAQPageSchema } from '@/lib/schema-org';
 
 export function generateMetadata(): Metadata {
   const { seo } = getHomepage();
@@ -32,13 +33,15 @@ export default function HomePage() {
   return (
     <>
       <ServiceSchema />
+      <FAQPageSchema items={content.faq.items} />
       <HeroSection hero={content.hero} />
       <TrustStrip trust={content.trustStrip} />
       <MarketShiftSection data={content.marketShift} />
       <TechStackSection />
       <ROIStrip stats={stats} />
-      <DiscoveryFramework data={content.discovery} />
       <QuickscanTeaser data={content.quickscanTeaser} />
+      <DiscoveryFramework data={content.discovery} />
+      <FAQ data={content.faq} />
       <ContactCTABlock
         eyebrow={content.contactCta.eyebrow}
         title={content.contactCta.title}
