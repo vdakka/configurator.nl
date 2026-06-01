@@ -1,60 +1,41 @@
-'use client';
-
-import { useState } from 'react';
 import Image from 'next/image';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionId } from '@/components/ui/SectionId';
 import { techStack, type TechStackItem } from '@/data/techstack';
 
 /**
- * §04 stack — Happy Horizon accelerator-stack.
- * Compact default: 5 hero-logos. Klik op de CTA onthult de complete grid
- * met alle 5 lagen.
+ * §04 stack — Happy Horizon accelerator-stack als doorlopende slider.
+ * Zelfde marquee-pattern als TrustStrip (§02 klanten) zodat partner-logos
+ * en klant-logos visueel rijmen.
  */
 
-// Slugs van de 5 meest herkenbare partners voor de compact-view
-const HIGHLIGHT_SLUGS = [
-  'shopify',
-  'adobe-commerce',
-  'commercetools',
-  'akeneo',
-  'algolia',
-];
-
-function LogoTile({ item, size = 'md' }: { item: TechStackItem; size?: 'sm' | 'md' }) {
-  const dims = size === 'md'
-    ? { tile: 'h-16 w-[180px]', image: 'max-h-12' }
-    : { tile: 'h-14 w-[140px]', image: 'max-h-10' };
+function LogoTile({ item, ariaHidden = false }: { item: TechStackItem; ariaHidden?: boolean }) {
   return (
     <li
-      className={`flex ${dims.tile} items-center justify-center rounded-md border border-hg-line bg-white px-4`}
-      aria-label={item.name}
+      className="mr-12 flex h-14 w-[140px] shrink-0 items-center justify-center"
+      aria-label={ariaHidden ? undefined : item.name}
+      aria-hidden={ariaHidden || undefined}
     >
       <Image
         src={`/tech-logos/${item.slug}.png`}
-        alt={item.name}
-        width={240}
+        alt={ariaHidden ? '' : item.name}
+        width={200}
         height={56}
-        className={`${dims.image} max-w-full object-contain`}
+        className="max-h-14 max-w-full object-contain"
       />
     </li>
   );
 }
 
 export function TechStackSection() {
-  const [expanded, setExpanded] = useState(false);
-
-  // Bouw highlight-array door de slugs op te zoeken in de volledige stack.
+  // Flatten alle 20 items volgens laag-volgorde (Commerce → Experience → … → PXM)
   const allItems: TechStackItem[] = techStack.flatMap((layer) => layer.items);
-  const highlights = HIGHLIGHT_SLUGS
-    .map((slug) => allItems.find((item) => item.slug === slug))
-    .filter((item): item is TechStackItem => Boolean(item));
 
   return (
-    <section className="relative overflow-hidden bg-hg py-20 sm:py-24">
+    <section className="relative overflow-hidden bg-white py-20 sm:py-24">
       <SectionId num="04" label="stack" />
 
-      <div className="relative mx-auto max-w-page px-6 sm:px-8">
+      <div className="mx-auto max-w-page px-6 sm:px-8">
         <Eyebrow>Tech-stack · accelerator</Eyebrow>
         <h2 className="mt-6 max-w-[900px] text-[32px] font-black leading-[1.05] tracking-display sm:text-[40px] md:text-[48px]">
           Een configurator is zo sterk als zijn koppelingen.
@@ -66,53 +47,31 @@ export function TechStackSection() {
           tools verkopen we niet.
         </p>
 
-        {/* Compact highlights row */}
-        <ul className="mt-10 flex flex-wrap gap-3">
-          {highlights.map((item) => (
-            <LogoTile key={item.slug} item={item} size="md" />
+        {/* Layer-labels als kleine context onder de lede */}
+        <p className="mono-label mt-6 text-[11px] text-hb-sec">
+          {techStack.map((layer) => layer.label).join(' · ')}
+        </p>
+      </div>
+
+      {/* Marquee — zelfde aanpak als TrustStrip */}
+      <div
+        className="group relative mt-12 overflow-hidden"
+        style={{
+          maskImage:
+            'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
+          WebkitMaskImage:
+            'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
+        }}
+        aria-label="Tech-stack partners"
+      >
+        <ul className="flex w-max items-center animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+          {allItems.map((item) => (
+            <LogoTile key={`a-${item.slug}`} item={item} />
+          ))}
+          {allItems.map((item) => (
+            <LogoTile key={`b-${item.slug}`} item={item} ariaHidden />
           ))}
         </ul>
-
-        <button
-          type="button"
-          onClick={() => setExpanded((v) => !v)}
-          aria-expanded={expanded}
-          aria-controls="techstack-full-grid"
-          className="mt-8 inline-flex items-center gap-2 text-[14px] font-bold text-hb underline decoration-2 underline-offset-4 hover:text-hb-soft"
-        >
-          {expanded ? 'Verberg volledige tech-stack' : 'Ontdek onze volledige tech-stack'}
-          <span aria-hidden className={`transition-transform ${expanded ? 'rotate-180' : ''}`}>
-            ↓
-          </span>
-        </button>
-
-        {/* Expanded full grid */}
-        <div
-          id="techstack-full-grid"
-          className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out ${
-            expanded ? 'mt-10 grid-rows-[1fr]' : 'grid-rows-[0fr]'
-          }`}
-        >
-          <div className="min-h-0">
-            <div className="space-y-6">
-              {techStack.map((layer) => (
-                <div
-                  key={layer.label}
-                  className="grid items-start gap-x-10 gap-y-3 border-t border-hg-line pt-5 lg:grid-cols-[120px_1fr]"
-                >
-                  <h3 className="mono-label pt-2 text-[11px] text-hb-sec">
-                    {layer.label}
-                  </h3>
-                  <ul className="flex flex-wrap gap-2.5">
-                    {layer.items.map((item) => (
-                      <LogoTile key={item.slug} item={item} size="sm" />
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
