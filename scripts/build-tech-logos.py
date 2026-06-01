@@ -25,39 +25,58 @@ OUT_DIR = os.path.abspath(OUT_DIR)
 BRAND_RGB = (0x07, 0x07, 0x33)
 TARGET_H = 192  # source height for retina; tile renders at h-14 (56px)
 
-# (slug, source image number from PPTX media folder)
+# (slug, source image number from PPTX media folder, optional crop)
+# crop: dict with optional 'left_frac' / 'right_frac' to drop a portion of the
+# source before extracting the silhouette. Used when the PPTX source contains
+# both an icon (which extracts poorly as a featureless blob) and a wordmark —
+# we keep just the wordmark side. Fractions are relative to source width.
 LOGOS = [
     # Commerce
-    ("shopify", 51),
-    ("commercetools", 61),
-    ("adobe-commerce", 67),
-    ("bigcommerce", 64),
-    ("medusa", 59),
-    ("shopware", 52),
+    ("shopify", 51, None),
+    ("commercetools", 61, None),
+    ("adobe-commerce", 67, None),
+    ("bigcommerce", 64, None),
+    ("medusa", 59, None),
+    ("shopware", 52, None),
     # Experience
-    ("storyblok", 53),
-    ("strapi", 70),
-    ("aem", 45),
-    ("umbraco", 66),
+    ("storyblok", 53, None),
+    # Strapi gehandeld via simpleicons SVG (zie /public/tech-logos/strapi.svg).
+    # Bron-PPTX heeft geen S-cutout, dus we slaan dit script over voor strapi.
+    # AEM source = navy circle + "Adobe Experience Manager" wordmark. Circle
+    # extraheert als kleurloze blob; we behouden alleen de wordmark rechts.
+    ("aem", 45, {"left_frac": 0.45}),
+    ("umbraco", 66, None),
     # iPaaS
-    ("alumio", 60),
-    ("xcore", 62),
-    ("tinxit", 56),
+    ("alumio", 60, None),
+    ("xcore", 62, None),
+    ("tinxit", 56, None),
     # Search
-    ("tweakwise", 44),
-    ("algolia", 43),
-    ("meilisearch", 63),
-    ("voyado", 54),
+    ("tweakwise", 44, None),
+    ("algolia", 43, None),
+    ("meilisearch", 63, None),
+    ("voyado", 54, None),
     # PXM
-    ("akeneo", 65),
-    ("katana-pim", 47),
-    ("bluestone-pim", 68),
+    ("akeneo", 65, None),
+    ("katana-pim", 47, None),
+    ("bluestone-pim", 68, None),
 ]
 
+# Slugs die geen PNG genereren (handmatig of via extern beheerde SVG).
+SKIP_SLUGS = {"strapi"}
 
-def process(src_path: str, out_path: str) -> tuple[int, int]:
+
+def process(src_path: str, out_path: str, crop=None) -> tuple[int, int]:
     img = Image.open(src_path).convert("RGBA")
     w, h = img.size
+
+    # Optional source-side crop (used to drop e.g. an unrecognisable icon
+    # next to a wordmark before silhouetting).
+    if crop:
+        left = int(w * crop.get("left_frac", 0))
+        right = w - int(w * crop.get("right_frac", 0))
+        img = img.crop((left, 0, right, h))
+        w, h = img.size
+
     new = Image.new("RGBA", (w, h), (255, 255, 255, 0))
     spx = img.load()
     npx = new.load()
@@ -87,17 +106,23 @@ def main() -> int:
         return 1
     os.makedirs(OUT_DIR, exist_ok=True)
     total_kb = 0
-    for slug, num in LOGOS:
+    rendered = 0
+    for entry in LOGOS:
+        slug, num, crop = entry
+        if slug in SKIP_SLUGS:
+            print(f"  SKIP  {slug}: handmatig beheerd (zie /public/tech-logos/{slug}.svg)")
+            continue
         src = os.path.join(MEDIA_DIR, f"image{num}.png")
         if not os.path.exists(src):
             print(f"  SKIP  {slug}: image{num}.png ontbreekt")
             continue
         out = os.path.join(OUT_DIR, f"{slug}.png")
-        size = process(src, out)
+        size = process(src, out, crop=crop)
         kb = os.path.getsize(out) // 1024
         total_kb += kb
+        rendered += 1
         print(f"  OK    {slug}.png: {size[0]}x{size[1]}, {kb} KB")
-    print(f"\nTotal: {total_kb} KB ({len(LOGOS)} files in {OUT_DIR})")
+    print(f"\nTotal: {total_kb} KB ({rendered} files in {OUT_DIR})")
     return 0
 
 

@@ -9,7 +9,12 @@ import { techStack, type TechStackItem } from '@/data/techstack';
  * en klant-logos visueel rijmen.
  */
 
+// Slugs die als SVG geserveerd worden ipv PNG (externe bron of handmatige
+// override, zie scripts/build-tech-logos.py SKIP_SLUGS).
+const SVG_SLUGS = new Set(['strapi']);
+
 function LogoTile({ item, ariaHidden = false }: { item: TechStackItem; ariaHidden?: boolean }) {
+  const ext = SVG_SLUGS.has(item.slug) ? 'svg' : 'png';
   return (
     <li
       className="mr-12 flex h-14 w-[140px] shrink-0 items-center justify-center"
@@ -17,11 +22,12 @@ function LogoTile({ item, ariaHidden = false }: { item: TechStackItem; ariaHidde
       aria-hidden={ariaHidden || undefined}
     >
       <Image
-        src={`/tech-logos/${item.slug}.png`}
+        src={`/tech-logos/${item.slug}.${ext}`}
         alt={ariaHidden ? '' : item.name}
         width={200}
         height={56}
         className="max-h-14 max-w-full object-contain"
+        unoptimized={ext === 'svg'}
       />
     </li>
   );
