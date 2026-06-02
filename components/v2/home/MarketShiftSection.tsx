@@ -69,8 +69,10 @@ export function MarketShiftSection({
                   key={b.title}
                   className="grid grid-cols-[auto_1fr] gap-x-5 gap-y-1 border-b border-mk-ink/15 pb-6 last:border-b-0 last:pb-0"
                 >
-                  <dt className="row-span-2 self-start font-inter text-[13px] font-bold text-mk-coral">
-                    {b.num}
+                  {/* Categorische nummers — coral/blue zijn per brandbook
+                      gereserveerd voor data-viz, dus lime (spoor 02 accent). */}
+                  <dt className="row-span-2 self-start font-instrument text-[20px] italic leading-none text-mk-ink">
+                    <span className="rounded bg-mk-lime px-1.5">{b.num}</span>
                   </dt>
                   <dt className="font-instrument text-[22px] leading-tight text-mk-ink">
                     {b.title}

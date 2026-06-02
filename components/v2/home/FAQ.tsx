@@ -38,7 +38,10 @@ export function FAQ({ data }: { data: HomepageContent['faq'] }) {
               className="group border-b border-mk-ink/10 py-6 last:border-b-0 [&_summary::-webkit-details-marker]:hidden"
             >
               <summary className="grid cursor-pointer list-none grid-cols-[48px_1fr_32px] items-start gap-4">
-                <span className="font-inter text-[12px] font-bold uppercase tracking-[0.15em] text-mk-coral group-open:text-mk-ink">
+                {/* Q-prefix is decoratief/categorisch — coral is per brandbook
+                    voor data/alerts. Muted in rust, Ink op yellow als
+                    'open'-state (= geactiveerd = spoor 01 accent). */}
+                <span className="inline-flex items-center justify-center rounded font-inter text-[12px] font-bold uppercase tracking-[0.15em] text-mk-muted group-open:bg-mk-yellow group-open:px-2 group-open:py-0.5 group-open:text-mk-ink">
                   Q.
                 </span>
                 <span className="font-instrument text-[20px] leading-tight text-mk-ink sm:text-[22px]">

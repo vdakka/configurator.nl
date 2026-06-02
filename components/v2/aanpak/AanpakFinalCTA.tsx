@@ -45,7 +45,7 @@ export function AanpakFinalCTA({
               href={o.href.replace(/^\/(contact|aanpak|quickscan)/, '/v2/$1')}
               className="group flex flex-col gap-4 rounded-2xl border-2 border-mk-ink bg-mk-paper p-8 transition-transform hover:-translate-y-1"
             >
-              <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.15em] text-mk-coral">
+              <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.15em] text-mk-muted">
                 {o.tag}
               </span>
               <h3 className="font-instrument text-[24px] leading-tight text-mk-ink">

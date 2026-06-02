@@ -81,7 +81,7 @@ export function AxesGrid({
                 <ul className="mt-3 space-y-2 font-inter text-[14px] leading-[1.5] text-mk-ink/80">
                   {axis.questions.slice(0, 3).map((q) => (
                     <li key={q} className="flex gap-2">
-                      <span aria-hidden className="text-mk-coral">
+                      <span aria-hidden className="font-semibold text-mk-ink/50">
                         →
                       </span>
                       <span>{q}</span>

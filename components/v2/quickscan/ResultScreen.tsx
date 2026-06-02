@@ -152,7 +152,7 @@ export function ResultScreen({
               href="https://www.linkedin.com/company/happy-horizon"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-semibold text-mk-ink hover:text-mk-coral"
+              className="inline-flex items-center gap-2 font-semibold text-mk-ink transition-opacity hover:opacity-70"
             >
               {copy.follow ?? 'Volg ons'}
               <span

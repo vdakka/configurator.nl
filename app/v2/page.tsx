@@ -53,7 +53,7 @@ export default function V2Home() {
           </div>
           <Link
             href="/"
-            className="font-inter text-[13px] font-semibold text-mk-ink underline decoration-mk-yellow decoration-2 underline-offset-4 hover:text-mk-coral"
+            className="font-inter text-[13px] font-semibold text-mk-ink underline decoration-mk-yellow decoration-2 underline-offset-4 transition-opacity hover:opacity-70"
           >
             ← Naar huidige versie
           </Link>
