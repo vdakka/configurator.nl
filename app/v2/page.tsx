@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getHomepage, getStats } from '@/lib/content';
+import { getHomepage, getStats, getGerke } from '@/lib/content';
 import { HeroSection } from '@/components/v2/home/HeroSection';
 import { TrustStrip } from '@/components/v2/home/TrustStrip';
 import { MarketShiftSection } from '@/components/v2/home/MarketShiftSection';
@@ -8,20 +8,23 @@ import { TechStackSection } from '@/components/v2/home/TechStackSection';
 import { ROIStrip } from '@/components/v2/home/ROIStrip';
 import { QuickscanTeaser } from '@/components/v2/home/QuickscanTeaser';
 import { DiscoveryFramework } from '@/components/v2/home/DiscoveryFramework';
+import { FAQ } from '@/components/v2/home/FAQ';
+import { ContactCTABlock } from '@/components/v2/home/ContactCTABlock';
 
 export const metadata: Metadata = {
   title: 'Merkboek 2026 · work in progress',
 };
 
 /**
- * /v2 homepage — Fase 4 voegt §03 (definitie) + §04 (tech-stack) + §05
- * (ROI) toe, alle drie in spoor 02 "Toekomst" (lime/beige/blobs).
- *
- * §06–§09 (quickscan-teaser, aanpak, FAQ, contact) volgen in fase 5/6.
+ * /v2 homepage — Fase 6 voegt §08 (FAQ) + §09 (contact) toe. Daarmee is
+ * de homepage volledig over op merkboek-stijl; fase 7 doet de subpagina's
+ * (aanpak / quickscan / contact-route) en de eindcontrole (responsive,
+ * contrast, 55/25/15-verhouding).
  */
 export default function V2Home() {
   const content = getHomepage();
   const stats = getStats();
+  const gerke = getGerke();
   return (
     <>
       <HeroSection hero={content.hero} />
@@ -31,6 +34,13 @@ export default function V2Home() {
       <ROIStrip stats={stats} />
       <QuickscanTeaser data={content.quickscanTeaser} />
       <DiscoveryFramework data={content.discovery} />
+      <FAQ data={content.faq} />
+      <ContactCTABlock
+        eyebrow={content.contactCta.eyebrow}
+        title={content.contactCta.title}
+        body={content.contactCta.body}
+        gerke={gerke}
+      />
 
       {/* WIP-banner & vergelijk-link */}
       <section className="mx-auto w-full max-w-page px-6 py-16 sm:px-8">
@@ -38,7 +48,8 @@ export default function V2Home() {
           <div className="flex items-center gap-3">
             <span className="h-2 w-2 animate-livePulse rounded-full bg-mk-coral" />
             <p className="font-inter text-[13px] text-mk-muted">
-              Merkboek 2026 — fase 5/7. §01–§07 zijn live. §08–§09 volgen.
+              Merkboek 2026 — fase 6/7. /v2 homepage compleet. Subpagina&apos;s
+              volgen in fase 7.
             </p>
           </div>
           <Link
