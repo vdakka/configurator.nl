@@ -6,6 +6,8 @@ import { TrustStrip } from '@/components/v2/home/TrustStrip';
 import { MarketShiftSection } from '@/components/v2/home/MarketShiftSection';
 import { TechStackSection } from '@/components/v2/home/TechStackSection';
 import { ROIStrip } from '@/components/v2/home/ROIStrip';
+import { QuickscanTeaser } from '@/components/v2/home/QuickscanTeaser';
+import { DiscoveryFramework } from '@/components/v2/home/DiscoveryFramework';
 
 export const metadata: Metadata = {
   title: 'Merkboek 2026 · work in progress',
@@ -27,6 +29,8 @@ export default function V2Home() {
       <MarketShiftSection data={content.marketShift} />
       <TechStackSection />
       <ROIStrip stats={stats} />
+      <QuickscanTeaser data={content.quickscanTeaser} />
+      <DiscoveryFramework data={content.discovery} />
 
       {/* WIP-banner & vergelijk-link */}
       <section className="mx-auto w-full max-w-page px-6 py-16 sm:px-8">
@@ -34,7 +38,7 @@ export default function V2Home() {
           <div className="flex items-center gap-3">
             <span className="h-2 w-2 animate-livePulse rounded-full bg-mk-coral" />
             <p className="font-inter text-[13px] text-mk-muted">
-              Merkboek 2026 — fase 4/7. §01–§05 zijn live. §06–§09 volgen.
+              Merkboek 2026 — fase 5/7. §01–§07 zijn live. §08–§09 volgen.
             </p>
           </div>
           <Link
