@@ -4,7 +4,6 @@ import {
   Disc,
   Plus,
   RoundedSquare,
-  Triangle,
 } from '@/components/v2/decorative/GeometricShapes';
 import type { HomepageContent } from '@/lib/content';
 
@@ -22,32 +21,28 @@ import type { HomepageContent } from '@/lib/content';
 export function HeroSection({ hero }: { hero: HomepageContent['hero'] }) {
   return (
     <section className="relative overflow-hidden bg-mk-yellow text-mk-ink">
-      {/* Decoratieve geometrische shapes — rechts, op grotere viewports */}
+      {/* Decoratieve shapes — gestripte palet: alleen Ink, geen coral/blue
+          confetti meer. Eén grote Ink-cirkel + plus + mini-disc. Strakker. */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <Circle
-          size={240}
+          size={260}
           color="var(--mk-ink)"
-          className="absolute -right-12 top-16 opacity-90"
+          className="absolute -right-16 top-14 opacity-90"
         />
         <RoundedSquare
           size={120}
-          color="var(--mk-coral)"
-          className="absolute right-[18%] top-[42%] hidden md:block"
+          color="var(--mk-ink)"
+          className="absolute right-[16%] top-[44%] hidden md:block opacity-25"
         />
         <Plus
           size={70}
           color="var(--mk-ink)"
-          className="absolute right-[8%] bottom-[18%] hidden md:block"
-        />
-        <Triangle
-          size={56}
-          color="var(--mk-blue)"
-          className="absolute right-[34%] top-[16%] hidden lg:block"
+          className="absolute right-[10%] bottom-[16%] hidden md:block opacity-60"
         />
         <Disc
-          size={32}
+          size={28}
           color="var(--mk-ink)"
-          className="absolute left-[8%] top-[28%] hidden md:block"
+          className="absolute left-[8%] top-[28%] hidden md:block opacity-80"
         />
       </div>
 

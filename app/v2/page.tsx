@@ -48,8 +48,7 @@ export default function V2Home() {
           <div className="flex items-center gap-3">
             <span className="h-2 w-2 animate-livePulse rounded-full bg-mk-coral" />
             <p className="font-inter text-[13px] text-mk-muted">
-              Merkboek 2026 — fase 6/7. /v2 homepage compleet. Subpagina&apos;s
-              volgen in fase 7.
+              Merkboek 2026 — alle 7 fases live. Klaar voor review &amp; cut-over.
             </p>
           </div>
           <Link

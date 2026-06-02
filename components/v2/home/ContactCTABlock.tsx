@@ -64,13 +64,16 @@ export function ContactCTABlock({
           )}
 
           <div className="mt-9 flex items-center gap-5">
-            <div className="relative h-[140px] w-[140px] shrink-0 overflow-hidden rounded-full bg-mk-paper ring-4 ring-mk-ink/10">
+            {/* Portret-cirkel — beige disc als warme container voor de
+                transparante portret-PNG. Object-top zodat het gezicht in
+                beeld blijft binnen het cirkel-frame. */}
+            <div className="relative h-[140px] w-[140px] shrink-0 overflow-hidden rounded-full bg-mk-beige ring-4 ring-mk-ink/15">
               <Image
-                src={gerke.portrait}
+                src={gerke.portraitV2 ?? gerke.portrait}
                 alt={gerke.portraitAlt}
                 fill
                 sizes="140px"
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
             <div className="leading-tight">
