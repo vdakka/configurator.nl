@@ -6,8 +6,6 @@ import {
   Inter,
 } from 'next/font/google';
 import './globals.css';
-import { Header } from '@/components/chrome/Header';
-import { Footer } from '@/components/chrome/Footer';
 import { OrganizationSchema, WebSiteSchema } from '@/lib/schema-org';
 
 const montserrat = Montserrat({
@@ -68,6 +66,15 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Root layout. Bewust dun gehouden: bevat alleen html/body/font-vars en de
+ * globale JSON-LD schemas. Header/Footer-chrome zit in de sub-layouts:
+ * - `app/(main)/layout.tsx` rendert de huidige Happy Horizon-chrome
+ * - `app/v2/layout.tsx`     rendert de Merkboek 2026-chrome
+ *
+ * Zo kunnen oude en nieuwe versie naast elkaar live staan op één deploy
+ * zonder dat de ene de andere's header/footer erft.
+ */
 export default function RootLayout({
   children,
 }: {
@@ -81,9 +88,7 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col">
         <OrganizationSchema />
         <WebSiteSchema />
-        <Header />
-        <main className="flex flex-1 flex-col">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
