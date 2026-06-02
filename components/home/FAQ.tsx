@@ -35,7 +35,10 @@ export function FAQ({ data }: { data: HomepageContent['faq'] }) {
               className="group border-b border-hg-line py-7 [&_summary::-webkit-details-marker]:hidden"
             >
               <summary className="grid cursor-pointer list-none grid-cols-[56px_1fr_32px] items-start gap-5">
-                <span className="font-mono text-[13px] font-bold text-hs1 group-open:text-hb">
+                {/* Q-prefix is decoratief/categorisch — coral (hs1) is per
+                    brandbook voor data/alerts. Hb-sec in rust, hb op yellow
+                    pill als 'open'-state (= geactiveerd). */}
+                <span className="inline-flex items-center justify-center rounded font-mono text-[13px] font-bold text-hb-sec group-open:bg-hy group-open:px-2 group-open:py-0.5 group-open:text-hb">
                   Q.
                 </span>
                 <span className="text-[20px] font-black tracking-heading text-hb sm:text-[22px]">

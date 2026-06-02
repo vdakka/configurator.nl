@@ -32,12 +32,21 @@ export function DiscoveryFramework({
     return () => obs.disconnect();
   }, []);
 
-  // Cycle through the 4 steps continuously to keep the section "alive"
+  // Cycle één keer door de 4 stappen na sectie-enter, dan stoppen. Was
+  // eerder een eeuwig-doorgaande 3.2s interval — leesonderbrekend voor
+  // bezoekers die rustig willen scannen. Eén ronde is genoeg om de
+  // sequentie te tonen; daarna mag de bezoeker zelf hovering / klikken.
   useEffect(() => {
     if (!inView) return;
+    let step = 0;
     const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % data.axes.length);
-    }, 3200);
+      step += 1;
+      if (step >= data.axes.length) {
+        clearInterval(interval);
+        return;
+      }
+      setActiveStep(step);
+    }, 4000);
     return () => clearInterval(interval);
   }, [inView, data.axes.length]);
 
@@ -80,12 +89,11 @@ export function DiscoveryFramework({
                 aria-hidden
                 className="absolute top-[34px] h-3 w-3 rounded-full bg-hy shadow-[0_0_18px_rgba(252,229,18,0.7)]"
                 initial={{ left: '6%' }}
-                animate={{ left: ['6%', '34%', '62%', '94%', '6%'] }}
+                animate={{ left: ['6%', '34%', '62%', '94%'] }}
                 transition={{
-                  duration: 12.8,
+                  duration: 12,
                   ease: 'linear',
-                  repeat: Infinity,
-                  times: [0, 0.25, 0.5, 0.75, 1],
+                  times: [0, 0.33, 0.66, 1],
                 }}
               />
             )}

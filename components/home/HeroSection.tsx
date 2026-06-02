@@ -38,36 +38,14 @@ export function HeroSection({ hero }: { hero: HomepageContent['hero'] }) {
               {hero.secondaryCta} <span aria-hidden>→</span>
             </Button>
           </div>
-
-          <p
-            className="mt-10 font-mono text-[11px] uppercase tracking-eyebrow text-white/45"
-            aria-hidden
-          >
-            // configurator.nl — discovery → build → integratie
-          </p>
         </div>
 
-        {/* Right-side 3D-compositie — hero anker, alleen desktop */}
+        {/* Right-side 3D-compositie — alleen sphereY als anker.
+            Bigtube + cube + lens-flare verwijderd om motion-noise te
+            reduceren (CRO: minder competing animations = sterker H1). */}
         <div className="relative hidden h-[440px] lg:block" aria-hidden>
-          {/* Lens-flare achter sphere */}
-          <div
-            className="pointer-events-none absolute right-[6%] top-1/2 h-[440px] w-[440px] -translate-y-1/2 rounded-full opacity-50"
-            style={{
-              background:
-                'radial-gradient(circle, rgba(252,229,18,0.18) 0%, rgba(252,229,18,0) 60%)',
-            }}
-          />
-          {/* Big Tube Blue (secundair, achter sphere) */}
-          <div className="absolute right-[2%] top-[8%] animate-float2">
-            <ThreeDShape shape="bigTubeB" size={200} />
-          </div>
-          {/* Sphere Yellow (groot, primair anker) */}
-          <div className="absolute right-[18%] top-1/2 -translate-y-1/2 animate-float1-slow">
-            <ThreeDShape shape="sphereY" size={300} priority />
-          </div>
-          {/* Small Cube Yellow (foreground accent) */}
-          <div className="absolute bottom-[6%] right-[42%] animate-float3">
-            <ThreeDShape shape="smallCubeY" size={100} />
+          <div className="absolute right-[14%] top-1/2 -translate-y-1/2 animate-float1-slow">
+            <ThreeDShape shape="sphereY" size={320} priority />
           </div>
         </div>
       </div>
