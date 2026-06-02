@@ -3,6 +3,7 @@ import { getHomepage, getStats, getGerke } from '@/lib/content';
 import { HeroSection } from '@/components/home/HeroSection';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { ROIStrip } from '@/components/home/ROIStrip';
+import { MidPageCTA } from '@/components/home/MidPageCTA';
 import { MarketShiftSection } from '@/components/home/MarketShiftSection';
 import { TechStackSection } from '@/components/home/TechStackSection';
 import { QuickscanTeaser } from '@/components/home/QuickscanTeaser';
@@ -39,6 +40,7 @@ export default function HomePage() {
       <MarketShiftSection data={content.marketShift} />
       <TechStackSection />
       <ROIStrip stats={stats} />
+      <MidPageCTA />
       <QuickscanTeaser data={content.quickscanTeaser} />
       <DiscoveryFramework data={content.discovery} />
       <FAQ data={content.faq} />
