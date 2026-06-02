@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Huidige Happy Horizon tokens — gebruikt door bestaande / -site
         hb: '#070733',
         'hb-soft': '#14143f',
         'hb-line': '#1f1f55',
@@ -25,11 +26,24 @@ const config: Config = {
         hs2: '#F8C3B4',
         ann: '#FA8072',
         'ann-bg': '#FFF1EE',
+        // Merkboek 2026 (V1.0) — gebruikt door /v2-route. Geïsoleerde mk-*
+        // namespace zodat oude site ongemoeid blijft tijdens parallelle rebrand.
+        'mk-ink': '#11141C',
+        'mk-paper': '#FAF8F2',
+        'mk-yellow': '#FFD23F',
+        'mk-lime': '#D8E84A',
+        'mk-beige': '#E9DFC9',
+        'mk-coral': '#E85D3A',
+        'mk-blue': '#3A5BE8',
+        'mk-muted': '#6E6F76',
       },
       fontFamily: {
         sans: ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
         mont: ['Mont', 'var(--font-montserrat)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-jetbrains)', 'ui-monospace', 'monospace'],
+        // Merkboek 2026 — Instrument Serif (display) + Inter (body/UI)
+        instrument: ['var(--font-instrument)', 'ui-serif', 'Georgia', 'serif'],
+        inter: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         display: '-0.035em',
