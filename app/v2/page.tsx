@@ -1,26 +1,32 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getHomepage } from '@/lib/content';
+import { getHomepage, getStats } from '@/lib/content';
 import { HeroSection } from '@/components/v2/home/HeroSection';
 import { TrustStrip } from '@/components/v2/home/TrustStrip';
+import { MarketShiftSection } from '@/components/v2/home/MarketShiftSection';
+import { TechStackSection } from '@/components/v2/home/TechStackSection';
+import { ROIStrip } from '@/components/v2/home/ROIStrip';
 
 export const metadata: Metadata = {
   title: 'Merkboek 2026 · work in progress',
 };
 
 /**
- * /v2 homepage — Fase 3 voegt §01 hero + §02 klantsectie toe.
+ * /v2 homepage — Fase 4 voegt §03 (definitie) + §04 (tech-stack) + §05
+ * (ROI) toe, alle drie in spoor 02 "Toekomst" (lime/beige/blobs).
  *
- * Volgende fasen vullen §03–§09 (definitie, tech-stack, ROI, quickscan,
- * aanpak, FAQ, contact). De vergelijk-link onderaan blijft staan zodat
- * je per fase visueel kunt switchen tussen de huidige en nieuwe versie.
+ * §06–§09 (quickscan-teaser, aanpak, FAQ, contact) volgen in fase 5/6.
  */
 export default function V2Home() {
   const content = getHomepage();
+  const stats = getStats();
   return (
     <>
       <HeroSection hero={content.hero} />
       <TrustStrip trust={content.trustStrip} />
+      <MarketShiftSection data={content.marketShift} />
+      <TechStackSection />
+      <ROIStrip stats={stats} />
 
       {/* WIP-banner & vergelijk-link */}
       <section className="mx-auto w-full max-w-page px-6 py-16 sm:px-8">
@@ -28,8 +34,7 @@ export default function V2Home() {
           <div className="flex items-center gap-3">
             <span className="h-2 w-2 animate-livePulse rounded-full bg-mk-coral" />
             <p className="font-inter text-[13px] text-mk-muted">
-              Merkboek 2026 — fase 3/7. Hero + klantsectie zijn live op /v2.
-              §03–§09 volgen.
+              Merkboek 2026 — fase 4/7. §01–§05 zijn live. §06–§09 volgen.
             </p>
           </div>
           <Link
