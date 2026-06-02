@@ -5,11 +5,16 @@ import type { StatsConfig } from '@/lib/content';
 /**
  * §05 ROI — Merkboek 2026 spoor 02 "Toekomst".
  *
- * Beige-achtergrond met grote lime-blob op de achtergrond. KPI's als
- * result-pills (Ink op Yellow) bovenaan elk getal. Bronvermelding via
- * de hover/focus tooltip net als origineel — anders gestyled in
- * Inter caption + Ink panel.
+ * Beige-achtergrond met grote lime-blob op de achtergrond. KPI's gebruiken
+ * gevarieerde pill-kleuren: yellow → coral → blue. Per brandbook zijn coral
+ * en blue gereserveerd voor "data visualization" — KPI's vallen daar
+ * letterlijk onder, en de variatie geeft elke metric eigen visuele identiteit
+ * i.p.v. drie identieke gele balken.
  */
+
+// KPI-rotatie: yellow (eerste impact: snelheid) → coral (data: kwaliteit) →
+// blue (data: conversie). Past brandbook-regels op data viz.
+const KPI_VARIANTS = ['result', 'data', 'dataAlt'] as const;
 export function ROIStrip({ stats }: { stats: StatsConfig }) {
   return (
     <section className="relative overflow-hidden bg-mk-beige py-24 text-mk-ink sm:py-28">
@@ -43,7 +48,7 @@ export function ROIStrip({ stats }: { stats: StatsConfig }) {
         <ul className="mt-14 grid gap-10 md:grid-cols-3">
           {stats.heroStats.map((s, i) => (
             <li key={s.label} className="flex flex-col gap-5">
-              <Pill variant="result" size="sm">
+              <Pill variant={KPI_VARIANTS[i % KPI_VARIANTS.length]} size="sm">
                 KPI {String(i + 1).padStart(2, '0')}
               </Pill>
               <div className="font-instrument leading-none text-mk-ink">

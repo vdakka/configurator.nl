@@ -52,7 +52,7 @@ export function AanpakHero({
           </Link>
           <a
             href="#timeline"
-            className="font-inter text-[15px] font-semibold text-mk-ink underline decoration-2 underline-offset-4 transition-colors hover:text-mk-coral"
+            className="font-inter text-[15px] font-semibold text-mk-ink underline decoration-2 underline-offset-4 transition-opacity hover:opacity-70"
           >
             {hero.secondaryCta} <span aria-hidden>↓</span>
           </a>
