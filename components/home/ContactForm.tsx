@@ -106,6 +106,7 @@ export function ContactForm() {
           name="message"
           label="Daag ons uit"
           placeholder="Vertel kort wat de uitdaging is, dan kan Gerke gericht meedenken."
+          required
         />
       </div>
 
@@ -179,11 +180,13 @@ function Textarea({
   name,
   label,
   placeholder,
+  required,
 }: {
   id: string;
   name: string;
   label: string;
   placeholder?: string;
+  required?: boolean;
 }) {
   return (
     <div>
@@ -192,13 +195,17 @@ function Textarea({
         className="mono-label mb-2 block text-[10px] text-hb-sec"
       >
         {label}
+        {required && <span className="ml-1 text-hs1" aria-hidden>*</span>}
+        {required && <span className="sr-only"> (verplicht)</span>}
       </label>
       <textarea
         id={id}
         name={name}
         rows={5}
         placeholder={placeholder}
+        required={required}
         className="block w-full resize-none rounded-xl border border-hg-line bg-white px-4 py-3.5 text-[14px] text-hb placeholder:text-hb-sec/70 focus:border-hb focus:outline-none"
+        {...(required ? { 'mcp-required': '' } : {})}
       />
     </div>
   );

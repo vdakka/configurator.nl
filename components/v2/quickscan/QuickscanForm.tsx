@@ -92,12 +92,19 @@ export function QuickscanForm({
             />
           </div>
           <Field
+            id={fid('email')}
+            name="email"
+            label={labels.email}
+            type="email"
+            autoComplete="email"
+            required
+          />
+          <Field
             id={fid('phone')}
             name="phone"
             label={labels.phone}
             type="tel"
             autoComplete="tel"
-            required
           />
           <Field
             id={fid('linkedin')}

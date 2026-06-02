@@ -6,6 +6,7 @@ import { TrustStrip } from '@/components/v2/home/TrustStrip';
 import { MarketShiftSection } from '@/components/v2/home/MarketShiftSection';
 import { TechStackSection } from '@/components/v2/home/TechStackSection';
 import { ROIStrip } from '@/components/v2/home/ROIStrip';
+import { MidPageCTA } from '@/components/v2/home/MidPageCTA';
 import { QuickscanTeaser } from '@/components/v2/home/QuickscanTeaser';
 import { DiscoveryFramework } from '@/components/v2/home/DiscoveryFramework';
 import { FAQ } from '@/components/v2/home/FAQ';
@@ -32,6 +33,7 @@ export default function V2Home() {
       <MarketShiftSection data={content.marketShift} />
       <TechStackSection />
       <ROIStrip stats={stats} />
+      <MidPageCTA />
       <QuickscanTeaser data={content.quickscanTeaser} />
       <DiscoveryFramework data={content.discovery} />
       <FAQ data={content.faq} />
