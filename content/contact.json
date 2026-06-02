@@ -10,7 +10,7 @@
   },
   "options": [
     { "tag": "Vroeg in oriëntatie", "title": "Doe de quickscan", "body": "Tien vragen, vijf minuten. Direct inzicht of een configurator bij jouw situatie past, en welke as je het eerst moet aanpakken.", "href": "/quickscan", "cta": "Start de quickscan" },
-    { "tag": "Even sparren", "title": "Plan een gesprek", "body": "Een uur sparren met Gerke. Geen sales pitch, wel concrete adviezen die je morgen kunt gebruiken.", "href": "mailto:hello@configurator.nl?subject=Plan%20een%20gesprek", "cta": "Plan een gesprek met Gerke" },
+    { "tag": "Even sparren", "title": "Plan een gesprek", "body": "Een uur sparren met Gerke. Geen sales pitch, wel concrete adviezen die je morgen kunt gebruiken.", "href": "#sparren", "cta": "Plan een gesprek met Gerke" },
     { "tag": "Doorpakken", "title": "Start een Discovery", "body": "Vier tot zes weken. Vaste scope, vaste prijs. Een onderbouwd plan, een klikbaar prototype, en een go of no-go advies.", "href": "/aanpak", "cta": "Lees over Discovery" }
   ]
 }
