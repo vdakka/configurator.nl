@@ -19,27 +19,17 @@ export function ContactCTABlock({
   return (
     <section className="relative overflow-hidden bg-hg py-16 text-hb sm:py-20">
       <SectionId num="09" label="contact" />
+      {/* Eén anker-shape behouden (was 3 — capB + smallCubeB verwijderd
+          om de form-conversie minder visueel druk te maken). */}
       <div
         aria-hidden
         className="pointer-events-none absolute -left-24 top-[18%] animate-float1-slow opacity-60"
       >
         <ThreeDShape shape="sphereY" size={240} />
       </div>
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-[26%] bottom-[6%] animate-float2 opacity-50"
-      >
-        <ThreeDShape shape="capB" size={160} />
-      </div>
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-[6%] top-[4%] animate-float3 opacity-50"
-      >
-        <ThreeDShape shape="smallCubeB" size={110} />
-      </div>
 
       <div className="relative mx-auto grid max-w-page items-start gap-16 px-6 sm:px-8 lg:grid-cols-2 lg:gap-20">
-        {/* LEFT: copy + Gerke */}
+        {/* LEFT: copy + Gerke + business-line pills */}
         <div>
           <Eyebrow>{eyebrow}</Eyebrow>
           <h2 className="mt-6 text-[36px] font-black leading-[1.02] tracking-display sm:text-[44px] md:text-[56px]">
@@ -67,6 +57,22 @@ export function ContactCTABlock({
                 {gerke.role}
               </p>
             </div>
+          </div>
+
+          {/* Business-line pills — concrete vakgebieden waar Gerke mee komt.
+              Geeft B2B-buyer direct rol-context vóór ze het formulier
+              invullen. */}
+          <div className="mt-6 flex flex-wrap gap-2">
+            {['Discovery', 'CPQ', 'Visualisatie', 'ERP / PIM-integratie'].map(
+              (line) => (
+                <span
+                  key={line}
+                  className="inline-flex items-center whitespace-nowrap rounded-full border border-hb-sec/30 bg-white px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-mono text-hb-sec"
+                >
+                  {line}
+                </span>
+              ),
+            )}
           </div>
         </div>
 
