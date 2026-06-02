@@ -160,6 +160,13 @@ export type TeamMember = {
   role: string;
   bio: string;
   portrait: string;
+  /**
+   * Transparante PNG-variant zonder achtergrond — bedoeld voor /v2
+   * (Merkboek 2026). v2-componenten kiezen deze i.p.v. `portrait` zodat
+   * we de juiste achtergrond per spoor zelf kunnen bepalen. Optioneel
+   * gemaakt zodat oude code niet breekt als asset (nog) ontbreekt.
+   */
+  portraitV2?: string;
   portraitAlt: string;
   linkedin: string;
 };
