@@ -17,13 +17,8 @@ export function ROIStrip({ stats }: { stats: StatsConfig }) {
         </div>
 
         <ul className="mt-12 grid gap-12 md:grid-cols-3">
-          {stats.heroStats.map((s, i) => {
-            // KPI's = data viz → border-rotatie yellow/coral/blue per
-            // brandbook. Was eerder 3× identieke yellow border.
-            const accentBorders = ['border-hy', 'border-ann', 'border-hb1'];
-            const accentBorder = accentBorders[i % accentBorders.length];
-            return (
-            <li key={s.label} className={`border-l-2 ${accentBorder} pl-6`}>
+          {stats.heroStats.map((s, i) => (
+            <li key={s.label} className="border-l-2 border-hy pl-6">
               <span className="mono-label block text-[10px] text-hb-sec">
                 KPI {String(i + 1).padStart(2, '0')}
               </span>
@@ -36,8 +31,7 @@ export function ROIStrip({ stats }: { stats: StatsConfig }) {
                 {s.label}
               </p>
             </li>
-            );
-          })}
+          ))}
         </ul>
       </div>
     </section>

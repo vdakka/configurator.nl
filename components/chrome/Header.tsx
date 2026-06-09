@@ -4,7 +4,7 @@ import { HappyHorizonLogo } from './HappyHorizonLogo';
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/aanpak', label: 'Aanpak' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/#contact', label: 'Contact' },
 ] as const;
 
 export function Header() {
@@ -28,7 +28,7 @@ export function Header() {
         </nav>
 
         <Link
-          href="/contact"
+          href="/#contact"
           className="inline-flex items-center gap-2 rounded-full bg-hy px-5 py-3 text-[14px] font-bold text-hb transition-transform hover:-translate-y-0.5"
         >
           Plan een gesprek

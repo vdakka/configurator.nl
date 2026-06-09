@@ -1,7 +1,21 @@
+'use client';
+
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { ThreeDShape } from '@/components/ui/ThreeDShape';
 import type { AanpakContent } from '@/lib/content';
 
+type Tab = 'questions' | 'deliverables';
+
+/**
+ * Interactive playground voor de vier Discovery-assen.
+ *
+ * Per as: een kaart met tab-segment (Vragen / Wat krijg je) die zonder
+ * page-reload kan switchen. Kaarten faden + slide-in op scroll-into-view
+ * met stagger. Bewust modern naast de statische voorganger; behoudt
+ * dark-bg HH-look (bg-hb + white tekst + yellow accents).
+ */
 export function AxesDeepdive({
   intro,
   axes,
@@ -22,75 +36,140 @@ export function AxesDeepdive({
           {intro.lede}
         </p>
 
-        <div className="mt-20 space-y-20">
+        <ol className="mt-16 grid gap-6 lg:grid-cols-2">
           {axes.map((axis, i) => (
-            <AxisArticle key={axis.id} axis={axis} reverse={i % 2 === 1} />
+            <AxisCard key={axis.id} axis={axis} index={i} />
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );
 }
 
-function AxisArticle({
+function AxisCard({
   axis,
-  reverse,
+  index,
 }: {
   axis: AanpakContent['axes'][number];
-  reverse: boolean;
+  index: number;
 }) {
+  const [tab, setTab] = useState<Tab>('questions');
   return (
-    <article
+    <motion.li
       id={axis.id}
-      className="relative grid scroll-mt-32 gap-12 border-t border-white/10 pt-16 lg:grid-cols-[1fr_2fr] lg:gap-16"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
+      className="group relative flex scroll-mt-32 flex-col rounded-2xl border border-hb-line bg-hb-soft p-7 transition-colors hover:border-hy/40 sm:p-8"
     >
-      <div className={`relative ${reverse ? 'lg:order-2' : ''}`}>
-        <div className="relative inline-flex items-center justify-center">
-          <ThreeDShape shape={axis.shape} size={220} className="animate-float1" />
+      {/* Header — tag, shape, title, sub */}
+      <header className="flex items-start justify-between gap-4">
+        <div>
           <span
             aria-hidden
-            className="absolute -right-3 -top-2 rounded-full border border-hb1/40 bg-hb-soft px-3 py-1 font-mono text-[10px] uppercase tracking-mono text-hb1"
+            className="inline-flex items-center rounded-full border border-hb1/40 bg-hb px-3 py-1 font-mono text-[10px] uppercase tracking-mono text-hb1"
           >
             {axis.tag}
           </span>
+          <h3 className="mt-4 text-[22px] font-black leading-tight tracking-heading sm:text-[26px]">
+            {axis.title}
+          </h3>
+          <p className="mt-2 text-[14px] text-white/65">{axis.titleSub}</p>
         </div>
+        <ThreeDShape
+          shape={axis.shape}
+          size={84}
+          className="shrink-0 animate-float1 opacity-90"
+        />
+      </header>
+
+      <p className="mt-5 text-[15px] leading-relaxed text-white/80">
+        {axis.intro}
+      </p>
+
+      {/* Tab segment control */}
+      <div
+        role="tablist"
+        aria-label={`${axis.title} — kies inhoud`}
+        className="mt-7 inline-flex w-fit gap-1 rounded-full bg-hb p-1"
+      >
+        <button
+          type="button"
+          role="tab"
+          aria-selected={tab === 'questions'}
+          onClick={() => setTab('questions')}
+          className={`rounded-full px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-mono transition-colors ${
+            tab === 'questions'
+              ? 'bg-hy text-hb'
+              : 'text-white/60 hover:text-white'
+          }`}
+        >
+          Vragen ({axis.questions.length})
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={tab === 'deliverables'}
+          onClick={() => setTab('deliverables')}
+          className={`rounded-full px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-mono transition-colors ${
+            tab === 'deliverables'
+              ? 'bg-hy text-hb'
+              : 'text-white/60 hover:text-white'
+          }`}
+        >
+          Wat krijg je ({axis.deliverables.length})
+        </button>
       </div>
 
-      <div className={reverse ? 'lg:order-1' : ''}>
-        <h3 className="text-[28px] font-black leading-tight tracking-heading sm:text-[36px] md:text-[40px]">
-          {axis.title}
-          <br />
-          <span className="text-white/60">{axis.titleSub}</span>
-        </h3>
-        <p className="mt-5 max-w-[720px] text-[16px] leading-relaxed text-white/78 md:text-[17px]">
-          {axis.intro}
-        </p>
-
-        <div className="mt-10 grid gap-12 sm:grid-cols-2">
-          <div>
-            <h4 className="mono-label text-[11px] text-hy">Vragen die we beantwoorden</h4>
-            <ul className="mt-4 space-y-3">
+      {/* Tab content — cross-fade switch */}
+      <div className="relative mt-5 min-h-[180px]">
+        <AnimatePresence mode="wait" initial={false}>
+          {tab === 'questions' ? (
+            <motion.ul
+              key="questions"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="space-y-3"
+            >
               {axis.questions.map((q) => (
-                <li key={q} className="flex items-start gap-3 text-[14px] leading-relaxed text-white/85">
-                  <span aria-hidden className="mt-0.5 font-mono font-bold text-hy">?</span>
+                <li
+                  key={q}
+                  className="flex items-start gap-3 text-[14px] leading-relaxed text-white/85"
+                >
+                  <span
+                    aria-hidden
+                    className="mt-0.5 shrink-0 font-mono font-bold text-hy"
+                  >
+                    ?
+                  </span>
                   <span>{q}</span>
                 </li>
               ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="mono-label text-[11px] text-hy">Wat krijg je</h4>
-            <ul className="mt-4 space-y-3">
+            </motion.ul>
+          ) : (
+            <motion.ul
+              key="deliverables"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="flex flex-wrap gap-2"
+            >
               {axis.deliverables.map((d) => (
-                <li key={d} className="flex items-start gap-3 text-[14px] leading-relaxed text-white/85">
-                  <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-hy" />
-                  <span>{d}</span>
+                <li
+                  key={d}
+                  className="inline-flex items-center rounded-full border border-hy/40 bg-hb px-3 py-1.5 text-[13px] font-semibold text-hy"
+                >
+                  {d}
                 </li>
               ))}
-            </ul>
-          </div>
-        </div>
+            </motion.ul>
+          )}
+        </AnimatePresence>
       </div>
-    </article>
+    </motion.li>
   );
 }

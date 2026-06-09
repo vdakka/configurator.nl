@@ -22,7 +22,7 @@ export function MidPageCTA() {
           </p>
         </div>
         <Link
-          href="/contact"
+          href="/#contact"
           className="inline-flex shrink-0 items-center gap-2 rounded-full bg-hb px-6 py-3.5 text-[14px] font-bold text-white transition-transform hover:-translate-y-0.5"
         >
           Plan een gesprek

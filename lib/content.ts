@@ -122,22 +122,12 @@ export type AanpakContent = {
   finalCta: {
     eyebrow: string;
     title: string;
-    options: Array<{ tag: string; title: string; body: string; href: string }>;
+    body: string;
   };
 };
 
 export function getAanpak(): AanpakContent {
   return readJson<AanpakContent>('aanpak.json');
-}
-
-export type ContactContent = {
-  seo: { title: string; description: string };
-  hero: { eyebrow: string; title: string; lede: string };
-  options: Array<{ tag: string; title: string; body: string; href: string; cta: string }>;
-};
-
-export function getContact(): ContactContent {
-  return readJson<ContactContent>('contact.json');
 }
 
 export type StatsConfig = {

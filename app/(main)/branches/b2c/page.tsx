@@ -24,7 +24,7 @@ export default function B2CPage() {
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
           <Link
-            href="/contact"
+            href="/#contact"
             className="inline-flex items-center gap-2 rounded-full bg-hy px-5 py-3 text-[14px] font-bold text-hb hover:-translate-y-0.5"
           >
             Plan een gesprek <span aria-hidden>→</span>

@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { getAanpak, getAanpakFAQ } from '@/lib/content';
+import { getAanpak, getAanpakFAQ, getGerke } from '@/lib/content';
 import { AanpakHero } from '@/components/v2/aanpak/AanpakHero';
 import { DefinitionBlock } from '@/components/v2/aanpak/DefinitionBlock';
 import { AxesGrid } from '@/components/v2/aanpak/AxesGrid';
 import { Timeline } from '@/components/v2/aanpak/Timeline';
 import { DeliverablesList } from '@/components/v2/aanpak/DeliverablesList';
 import { FAQ as HomeFAQ } from '@/components/v2/home/FAQ';
-import { AanpakFinalCTA } from '@/components/v2/aanpak/AanpakFinalCTA';
+import { ContactCTABlock } from '@/components/v2/home/ContactCTABlock';
 
 export function generateMetadata(): Metadata {
   const { seo } = getAanpak();
@@ -21,6 +21,7 @@ export function generateMetadata(): Metadata {
 export default function AanpakV2Page() {
   const content = getAanpak();
   const faqs = getAanpakFAQ();
+  const gerke = getGerke();
 
   // Map aanpak-FAQ items naar het home FAQ-component shape (q/a/open).
   const faqData = {
@@ -28,7 +29,7 @@ export default function AanpakV2Page() {
     title: content.faq.title,
     lede: content.faq.note,
     linkLabel: content.faq.linkLabel,
-    linkHref: '/v2/contact',
+    linkHref: '/v2#contact',
     items: faqs.map((f) => ({ q: f.q, a: f.a, open: false })),
   };
 
@@ -43,7 +44,12 @@ export default function AanpakV2Page() {
       <Timeline data={content.timeline} />
       <DeliverablesList data={content.deliverables} />
       <HomeFAQ data={faqData} />
-      <AanpakFinalCTA data={content.finalCta} />
+      <ContactCTABlock
+        eyebrow={content.finalCta.eyebrow}
+        title={content.finalCta.title}
+        body={content.finalCta.body}
+        gerke={gerke}
+      />
     </>
   );
 }
