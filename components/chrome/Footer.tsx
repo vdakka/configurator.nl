@@ -5,7 +5,7 @@ const SITE_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/aanpak', label: 'Aanpak' },
   { href: '/quickscan', label: 'Quickscan' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 const VESTIGINGEN = [

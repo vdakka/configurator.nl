@@ -7,6 +7,16 @@ import { Pill } from '@/components/v2/ui/Pill';
 import type { AanpakContent } from '@/lib/content';
 
 /**
+ * Map shared content-hrefs (root-relative) naar v2-specifieke paden.
+ * Source-JSON gebruikt `/aanpak`, `/quickscan`, `/#contact` — die mapt
+ * deze helper naar `/v2/aanpak`, `/v2/quickscan`, `/v2#contact`.
+ */
+function toV2Href(href: string): string {
+  if (href === '/#contact') return '/v2#contact';
+  return href.replace(/^\/(aanpak|quickscan)/, '/v2/$1');
+}
+
+/**
  * Slot-CTA — spoor 01 "Eerste stap". Twee conversie-opties: sparren of
  * doorpakken. Geel-dominant zoals §09 ContactCTA op de homepage.
  */
@@ -42,7 +52,7 @@ export function AanpakFinalCTA({
           {data.options.map((o) => (
             <Link
               key={o.title}
-              href={o.href.replace(/^\/(contact|aanpak|quickscan)/, '/v2/$1')}
+              href={toV2Href(o.href)}
               className="group flex flex-col gap-4 rounded-2xl border-2 border-mk-ink bg-mk-paper p-8 transition-transform hover:-translate-y-1"
             >
               <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.15em] text-mk-muted">

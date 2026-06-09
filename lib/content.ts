@@ -130,16 +130,6 @@ export function getAanpak(): AanpakContent {
   return readJson<AanpakContent>('aanpak.json');
 }
 
-export type ContactContent = {
-  seo: { title: string; description: string };
-  hero: { eyebrow: string; title: string; lede: string };
-  options: Array<{ tag: string; title: string; body: string; href: string; cta: string }>;
-};
-
-export function getContact(): ContactContent {
-  return readJson<ContactContent>('contact.json');
-}
-
 export type StatsConfig = {
   heroStats: Array<{ display: string; label: string }>;
   sources: string[];

@@ -20,7 +20,7 @@
 - Home: https://configurator.nl/
 - Aanpak: https://configurator.nl/aanpak
 - Quickscan: https://configurator.nl/quickscan
-- Contact: https://configurator.nl/contact
+- Contact-formulier: https://configurator.nl/#contact
 
 ## Contact
 Gerke van den Akker, SME Configuratoren, Happy Horizon.

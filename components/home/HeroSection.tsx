@@ -34,7 +34,7 @@ export function HeroSection({ hero }: { hero: HomepageContent['hero'] }) {
             <Button href="/quickscan?start=1" variant="primary">
               {hero.primaryCta} <span aria-hidden>→</span>
             </Button>
-            <Button href="/contact" variant="ghost">
+            <Button href="/#contact" variant="ghost">
               {hero.secondaryCta} <span aria-hidden>→</span>
             </Button>
           </div>

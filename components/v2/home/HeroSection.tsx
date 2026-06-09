@@ -80,7 +80,7 @@ export function HeroSection({ hero }: { hero: HomepageContent['hero'] }) {
           {/* Secondary CTA — Ink underline link. Hover = opacity-darken
               i.p.v. coral (per brandbook is coral data/alert-only). */}
           <Link
-            href="/v2/contact"
+            href="/v2#contact"
             className="font-inter text-[15px] font-semibold text-mk-ink underline decoration-2 underline-offset-4 transition-opacity hover:opacity-70"
           >
             {hero.secondaryCta} <span aria-hidden>→</span>

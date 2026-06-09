@@ -30,7 +30,10 @@ export function ContactCTABlock({
   gerke: TeamMember;
 }) {
   return (
-    <section className="relative overflow-hidden bg-mk-yellow py-20 text-mk-ink sm:py-24">
+    <section
+      id="contact"
+      className="relative scroll-mt-24 overflow-hidden bg-mk-yellow py-20 text-mk-ink sm:py-24"
+    >
       {/* Subtiele geometrische accents */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <Circle

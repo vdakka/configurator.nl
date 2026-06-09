@@ -28,7 +28,7 @@ export default function AanpakV2Page() {
     title: content.faq.title,
     lede: content.faq.note,
     linkLabel: content.faq.linkLabel,
-    linkHref: '/v2/contact',
+    linkHref: '/v2#contact',
     items: faqs.map((f) => ({ q: f.q, a: f.a, open: false })),
   };
 
