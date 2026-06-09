@@ -25,7 +25,7 @@ export function SlimHero({ hero }: { hero: AanpakContent['hero'] }) {
           {hero.sub}
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
-          <Button href="/contact" variant="primary">
+          <Button href="/#contact" variant="primary">
             {hero.primaryCta} <span aria-hidden>→</span>
           </Button>
           <Button href="#tijdlijn" variant="ghost">

@@ -149,14 +149,14 @@
     "title": "Wat klanten ons vooraf vragen.",
     "note": "Antwoorden in één regel of een korte alinea. Heb je een specifieke situatie?",
     "linkLabel": "Stel je vraag in een gesprek.",
-    "linkHref": "/contact"
+    "linkHref": "/#contact"
   },
   "finalCta": {
     "eyebrow": "Klaar om te starten",
     "title": "Genoeg gelezen. Tijd voor jouw configurator-vraagstuk.",
     "options": [
-      { "tag": "Eerst even sparren", "title": "Plan een vrijblijvend gesprek", "body": "Een uur sparren met onze configurator-leads over jouw situatie. Geen sales pitch, wel concrete adviezen die je morgen kan gebruiken.", "href": "/contact" },
-      { "tag": "Doorpakken", "title": "Start een Discovery-traject", "body": "Klaar voor de volgende stap? In vier tot zes weken leveren we een onderbouwd plan, een prototype en een go of no-go advies.", "href": "/contact" }
+      { "tag": "Eerst even sparren", "title": "Plan een vrijblijvend gesprek", "body": "Een uur sparren met onze configurator-leads over jouw situatie. Geen sales pitch, wel concrete adviezen die je morgen kan gebruiken.", "href": "/#contact" },
+      { "tag": "Doorpakken", "title": "Start een Discovery-traject", "body": "Klaar voor de volgende stap? In vier tot zes weken leveren we een onderbouwd plan, een prototype en een go of no-go advies.", "href": "/#contact" }
     ]
   }
 }

@@ -139,7 +139,7 @@
     "title": "Wat klanten ons doorgaans vragen.",
     "lede": "Korte antwoorden op de meest gestelde vragen. Mis je iets?",
     "linkLabel": "Stel je vraag in een gesprek.",
-    "linkHref": "/contact",
+    "linkHref": "/#contact",
     "items": [
       {
         "q": "Wat kost een configurator?",

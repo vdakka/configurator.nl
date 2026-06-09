@@ -44,7 +44,7 @@ export function AanpakHero({
 
         <div className="mt-9 flex flex-wrap items-center gap-5">
           <Link
-            href="/v2/contact"
+            href="/v2#contact"
             className="inline-flex items-center gap-2 rounded-full bg-mk-ink px-7 py-4 font-inter text-[15px] font-semibold text-mk-paper transition-transform hover:-translate-y-0.5"
           >
             {hero.primaryCta}

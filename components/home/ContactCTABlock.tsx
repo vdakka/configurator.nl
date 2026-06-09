@@ -17,7 +17,10 @@ export function ContactCTABlock({
   gerke: TeamMember;
 }) {
   return (
-    <section className="relative overflow-hidden bg-hg py-16 text-hb sm:py-20">
+    <section
+      id="contact"
+      className="relative scroll-mt-24 overflow-hidden bg-hg py-16 text-hb sm:py-20"
+    >
       <SectionId num="09" label="contact" />
       {/* Eén anker-shape behouden (was 3 — capB + smallCubeB verwijderd
           om de form-conversie minder visueel druk te maken). */}

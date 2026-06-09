@@ -4,7 +4,7 @@ import { MerkboekLogo } from '@/components/v2/brand/MerkboekLogo';
 const NAV_LINKS = [
   { href: '/v2', label: 'Home' },
   { href: '/v2/aanpak', label: 'Aanpak' },
-  { href: '/v2/contact', label: 'Contact' },
+  { href: '/v2#contact', label: 'Contact' },
 ] as const;
 
 /**
@@ -40,7 +40,7 @@ export function Header() {
         </nav>
 
         <Link
-          href="/v2/contact"
+          href="/v2#contact"
           className="inline-flex items-center gap-2 rounded-full bg-mk-yellow px-5 py-3 font-inter text-[14px] font-semibold text-mk-ink transition-transform hover:-translate-y-0.5"
         >
           Plan een gesprek
