@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getAanpak, getAanpakFAQ } from '@/lib/content';
+import { getAanpak, getAanpakFAQ, getGerke } from '@/lib/content';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { SlimHero } from '@/components/aanpak/SlimHero';
 import { AnchoredStats } from '@/components/aanpak/AnchoredStats';
@@ -8,7 +8,7 @@ import { AxesDeepdive } from '@/components/aanpak/AxesDeepdive';
 import { Timeline } from '@/components/aanpak/Timeline';
 import { DeliverablesSpec } from '@/components/aanpak/DeliverablesSpec';
 import { EditorialFAQ } from '@/components/aanpak/EditorialFAQ';
-import { FinalCTASection } from '@/components/aanpak/FinalCTASection';
+import { ContactCTABlock } from '@/components/home/ContactCTABlock';
 import { BreadcrumbListSchema, FAQPageSchema } from '@/lib/schema-org';
 
 export function generateMetadata(): Metadata {
@@ -24,6 +24,7 @@ export function generateMetadata(): Metadata {
 export default function AanpakPage() {
   const content = getAanpak();
   const faqs = getAanpakFAQ();
+  const gerke = getGerke();
   return (
     <>
       <BreadcrumbListSchema items={content.breadcrumb} />
@@ -36,7 +37,12 @@ export default function AanpakPage() {
       <Timeline data={content.timeline} />
       <DeliverablesSpec data={content.deliverables} />
       <EditorialFAQ meta={content.faq} items={faqs} />
-      <FinalCTASection data={content.finalCta} />
+      <ContactCTABlock
+        eyebrow={content.finalCta.eyebrow}
+        title={content.finalCta.title}
+        body={content.finalCta.body}
+        gerke={gerke}
+      />
     </>
   );
 }

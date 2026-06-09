@@ -21,7 +21,7 @@
   },
   "stats": [
     { "value": "4–6", "label": "Weken doorlooptijd" },
-    { "value": "€", "label": "Vaste scope, vaste prijs" },
+    { "value": "€ 8.000", "label": "Vaste scope, vaste prijs" },
     { "value": "4", "label": "Assen, parallel onderzocht" },
     { "value": "Go / no-go", "label": "Eerlijk advies aan het eind" }
   ],
@@ -47,11 +47,10 @@
       "shape": "sphereY",
       "title": "Bedrijfsdoelen en doelgroepen.",
       "titleSub": "Waarom verdienen we hier in?",
-      "intro": "Een configurator zonder business case is een mooi project zonder eigenaar. We brengen je markt, je doelen en je doelgroepen scherp in beeld, zodat elke latere ontwerpkeuze terugslaat op iets meetbaars.",
+      "intro": "Een configurator zonder business case is een project zonder eigenaar. Wij maken doel, doelgroep en KPI scherp.",
       "questions": [
         "Wat moet de configurator opleveren, in euro's en in tijd?",
         "Welke doelgroepen komen er binnen, en wat brengen ze mee?",
-        "Hoe verhoudt deze configurator zich tot je merkbelofte?",
         "Welke KPI's bewijzen straks dat het werkt?"
       ],
       "deliverables": [
@@ -67,12 +66,11 @@
       "shape": "smallCubeB",
       "title": "Toptaken en user flows.",
       "titleSub": "Wat doet de klant écht?",
-      "intro": "Een configurator is in de basis een gesprek tussen jou en je klant, in software. We brengen de toptaken in kaart, de momenten van twijfel, en het hulpniveau dat daarbij hoort. Inclusief de mensen aan jouw kant die met de configurator gaan werken.",
+      "intro": "Een configurator is een gesprek tussen jou en je klant, in software. Wij brengen de toptaken in kaart en de momenten van twijfel.",
       "questions": [
         "Welke beslissingen vraagt de configurator van je klant?",
         "Waar haakt iemand af, en wat helpt op dat moment?",
-        "Welke rollen in je organisatie werken straks mee?",
-        "Hoe ziet support eruit als de configurator vastloopt?"
+        "Welke rollen in je organisatie werken straks mee?"
       ],
       "deliverables": [
         "Jobs-to-be-done + persona's",
@@ -87,12 +85,11 @@
       "shape": "bigTubeY",
       "title": "Architectuur en ketens.",
       "titleSub": "Hoe vloeit een order door je organisatie?",
-      "intro": "De configurator raakt sales, productie, ERP, service. We ontrafelen waar welke data woont, welke regels valideren wat, en hoe een order door je organisatie loopt. Zonder dit in kaart bouw je een mooi front-end, maar geen schaalbaar systeem.",
+      "intro": "De configurator raakt sales, productie, ERP en service. Zonder data + regels in kaart bouw je een front-end, geen schaalbaar systeem.",
       "questions": [
         "Waar woont welke productdata, en wie is eigenaar?",
         "Welke regels valideren keuzes, en waar leven ze nu?",
-        "Hoe vloeit een order van klik tot productie?",
-        "Wat moet eerst op orde voor we kunnen bouwen?"
+        "Hoe vloeit een order van klik tot productie?"
       ],
       "deliverables": [
         "Data model + bronkoppelingen",
@@ -107,12 +104,11 @@
       "shape": "cubeY",
       "title": "Requirements en stack.",
       "titleSub": "Headless, monolithisch, build of buy?",
-      "intro": "Een technologie-keuze die past bij je team, je horizon en je budget. We toetsen kandidaat-stacks, beoordelen build vs buy, en geven concreet aan welke risico's je waar zit. Headless of API-first is geen religie, het is een keuze.",
+      "intro": "Een technologie-keuze die past bij je team, horizon en budget. Headless of API-first is geen religie — het is een keuze.",
       "questions": [
         "Sluit de stack aan op je bestaande commerce-platform?",
         "Bouwen we zelf, kopen we, of combineren we?",
-        "Wat is de TCO over drie jaar, in eerlijke cijfers?",
-        "Welke architectuur is robuust als je doorgroeit?"
+        "Wat is de TCO over drie jaar, in eerlijke cijfers?"
       ],
       "deliverables": [
         "Functionele + technische requirements",
@@ -127,22 +123,22 @@
     "title": "Week voor week. Wat doen wij, wat doen jullie.",
     "lede": "Een Discovery vraagt commitment van beide kanten, niet alleen budget. Hieronder zie je wat we van jou nodig hebben en wat wij parallel uitvoeren.",
     "phases": [
-      { "week": "Week 0", "title": "Intake en scope", "body": "We brengen vraag, ambitie en context in beeld. Twee korte sessies, geen 80 pagina's vooraf. Aan het eind: een afgebakende Discovery-scope op een A4.", "who": "Jullie: directie + product / e-commerce lead. Wij: 2 mensen.", "highlight": false },
-      { "week": "Week 1–2", "title": "Vier-assen onderzoek", "body": "Parallel werken aan Strategie, Mensen, Proces en Technologie. Workshops, interviews, data-analyse, technische ontdekking. Eén keer per week een sync van 30 minuten.", "who": "Jullie: beschikbaar voor ~6 interviews + 2 workshops. Wij: 3–4 mensen.", "highlight": false },
-      { "week": "Week 3–4", "title": "Concept en roadmap", "body": "We brengen de vier assen samen tot één configurator-visie, met fasering, kosten en risico's. Optioneel: een klikbaar prototype van de belangrijkste flow.", "who": "Jullie: review-sessies. Wij: volledig team.", "highlight": false },
-      { "week": "Week 5", "title": "Go of no-go", "body": "Presentatie aan jouw stuurgroep of directie. Een onderbouwd advies, geen powerpoint vol opties. Bouwen, fasen, of wachten. We adviseren ook eerlijk als nu niet het juiste moment is.", "who": "Jullie: stuurgroep. Wij: leads + strateeg.", "highlight": true }
+      { "week": "Week 0", "title": "Intake en scope", "body": "Twee korte sessies. Aan het eind: Discovery-scope op een A4.", "who": "Jullie: directie + product / e-commerce lead. Wij: 2 mensen.", "highlight": false },
+      { "week": "Week 1–2", "title": "Vier-assen onderzoek", "body": "Parallel werken aan Strategie, Mensen, Proces en Technologie. Workshops, interviews, data-analyse.", "who": "Jullie: beschikbaar voor ~6 interviews + 2 workshops. Wij: 3–4 mensen.", "highlight": false },
+      { "week": "Week 3–4", "title": "Concept en roadmap", "body": "Vier assen samen tot één configurator-visie. Optioneel klikbaar prototype.", "who": "Jullie: review-sessies. Wij: volledig team.", "highlight": false },
+      { "week": "Week 5", "title": "Go of no-go", "body": "Onderbouwd advies aan stuurgroep. Bouwen, fasen, of wachten — eerlijk.", "who": "Jullie: stuurgroep. Wij: leads + strateeg.", "highlight": true }
     ]
   },
   "deliverables": {
     "title": "Wat je aan het eind van Discovery in handen hebt.",
     "lede": "Geen 'concept op slide'. Werkbare artefacten waar je intern direct mee verder kan, of je nou met ons bouwt of met iemand anders.",
     "items": [
-      { "num": "01", "title": "Configurator-visie", "body": "Eén plaat. Wat we bouwen, voor wie en waarom. Het anker voor alle latere keuzes.", "tag": "document" },
-      { "num": "02", "title": "Vier-assen rapport", "body": "Strategie, Mensen, Proces en Technologie. Bevindingen, beslissingen en open vragen.", "tag": "document" },
-      { "num": "03", "title": "Architectuurplaat", "body": "End-to-end systeemvisie. Welke componenten, welke data, welke koppelingen.", "tag": "diagram" },
-      { "num": "04", "title": "Fasering en roadmap", "body": "Drie tot vijf fases. Wat eerst, wat later, met geschatte kosten en doorlooptijden.", "tag": "planning" },
-      { "num": "05", "title": "Klikbaar prototype", "body": "De belangrijkste flow als interactieve demo. Concrete check op de aannames.", "tag": "prototype" },
-      { "num": "06", "title": "Go of no-go advies", "body": "Eerlijk en onderbouwd. Bouwen, fasen, of wachten. Inclusief risico's en aannames.", "tag": "presentatie" }
+      { "num": "01", "title": "Configurator-visie", "body": "Eén plaat. Anker voor alle latere keuzes.", "tag": "document" },
+      { "num": "02", "title": "Vier-assen rapport", "body": "Bevindingen + beslissingen per as.", "tag": "document" },
+      { "num": "03", "title": "Architectuurplaat", "body": "End-to-end systeemvisie. Componenten + koppelingen.", "tag": "diagram" },
+      { "num": "04", "title": "Fasering en roadmap", "body": "3-5 fases met kosten en doorlooptijden.", "tag": "planning" },
+      { "num": "05", "title": "Klikbaar prototype", "body": "Belangrijkste flow als interactieve demo.", "tag": "prototype" },
+      { "num": "06", "title": "Go of no-go advies", "body": "Onderbouwd. Bouwen, fasen, of wachten.", "tag": "presentatie" }
     ]
   },
   "faq": {
@@ -153,10 +149,7 @@
   },
   "finalCta": {
     "eyebrow": "Klaar om te starten",
-    "title": "Genoeg gelezen. Tijd voor jouw configurator-vraagstuk.",
-    "options": [
-      { "tag": "Eerst even sparren", "title": "Plan een vrijblijvend gesprek", "body": "Een uur sparren met onze configurator-leads over jouw situatie. Geen sales pitch, wel concrete adviezen die je morgen kan gebruiken.", "href": "/#contact" },
-      { "tag": "Doorpakken", "title": "Start een Discovery-traject", "body": "Klaar voor de volgende stap? In vier tot zes weken leveren we een onderbouwd plan, een prototype en een go of no-go advies.", "href": "/#contact" }
-    ]
+    "title": "Klaar voor Discovery?",
+    "body": "Vertel Gerke je vraagstuk. Hij leest deze week mee en reageert binnen 2 werkdagen."
   }
 }

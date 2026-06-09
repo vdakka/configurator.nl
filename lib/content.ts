@@ -122,7 +122,7 @@ export type AanpakContent = {
   finalCta: {
     eyebrow: string;
     title: string;
-    options: Array<{ tag: string; title: string; body: string; href: string }>;
+    body: string;
   };
 };
 
